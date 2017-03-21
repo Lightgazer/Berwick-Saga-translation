@@ -2,12 +2,12 @@
 Berwick Saga translation tool.
 
 # Compile
-Linux: 
+Linux:  
 Use MonoDevelop to compile.
 
-Windows: 
-Install MSBuild Tools 2013, 2015(both) and gtk#.
-Use Xamarin Studio or Visual Studio to compile. 
+Windows:   
+Install MSBuild Tools 2013, 2015(both) and gtk#.  
+Use Xamarin Studio or Visual Studio to compile.  
 
 # Usage
 Place DATA3.DAT, DATA4.DAT and TuBS.exe in one folder, then run.
