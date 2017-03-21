@@ -6,7 +6,7 @@ Linux:
 Use MonoDevelop to compile.
 
 Windows: 
-Istall MSBuild Tools 2013, 2015(both) and gtk#.
+Install MSBuild Tools 2013, 2015(both) and gtk#.
 Use Xamarin Studio or Visual Studio to compile. 
 
 # Usage
