@@ -43,12 +43,10 @@ public partial class MainWindow : Gtk.Window
 		string filename = new FileInfo (file).Name;
 		System.IO.Directory.CreateDirectory (out_dir + filename);
 		reader.BaseStream.Seek ((long)offset_to_filelist, SeekOrigin.Begin);
-		string progtext = progressbar.Text;
 		for (int index = 0; index < num_of_files; ++index) {
 			string child_name = "";
 			for (char buf = reader.ReadChar (); buf != 0; buf = reader.ReadChar ())
 				child_name += (object)buf;
-			progressbar.Text = progtext + " (" + child_name + ")";
 			Main.IterationDo (false);
 			list_offset = reader.BaseStream.Position;
 			reader.BaseStream.Seek ((long)(16 + index * 12), SeekOrigin.Begin);
@@ -66,7 +64,6 @@ public partial class MainWindow : Gtk.Window
 			if (offset % 2 == 1)
 				Comp.uncompr (out_path);
 		}
-		progressbar.Text = progtext;
 		//Move child TARC from out_dir
 		string[] child_tarc_files = System.IO.Directory.GetFiles (out_dir + filename, "*.ar");
 		if (child_tarc_files.Length != 0) {
@@ -253,6 +250,7 @@ public partial class MainWindow : Gtk.Window
 
 		progressbar.Text = "Status: Converting images";
 		Main.IterationDo (false);
+		Main.IterationDo (false);
 		ConvertPics ();
 
 		progressbar.Text = "Status: Done";
@@ -285,9 +283,10 @@ public partial class MainWindow : Gtk.Window
 
 		int i = 0;
 		foreach (string file in ttx_list) {
-			progressbar.Text = "Status: Converting image " + file;
+			progressbar.Text = "Status: Converting image: " + file;
 			i++;
 			progressbar.Fraction = ((double)i / ttx_list.Count * 0.30);
+			Main.IterationDo (false);
 			Main.IterationDo (false);
 			string ttx = out_dir + file.Substring (0, file.Length - 4);
 			ImageConv.PNGToTTX (pic_dir + file, ttx);
@@ -298,9 +297,10 @@ public partial class MainWindow : Gtk.Window
 
 		i = 0;
 		foreach (string file in tb_list) {
-			progressbar.Text = "Status: Converting image " + file;
+			progressbar.Text = "Status: Converting image: " + file;
 			i++;
-			progressbar.Fraction = 3 + ((double)i / tb_list.Count * 0.05);
+			progressbar.Fraction = 0.3 + ((double)i / tb_list.Count * 0.05);
+			Main.IterationDo (false);
 			Main.IterationDo (false);
 			string screen = out_dir + file.Substring (0, file.Length - 4) + System.IO.Path.DirectorySeparatorChar;
 			ImageConv.PNGToTb (pic_dir + file, screen + "000.tp", screen + "000.tb");
@@ -309,6 +309,10 @@ public partial class MainWindow : Gtk.Window
 		SortImportFiles ();
 		tb_list.Clear ();
 
+		progressbar.Text = "Status: Packing files";
+		progressbar.Fraction = 0.37;
+		Main.IterationDo (false);
+		Main.IterationDo (false);
 		foreach (string file in script_list)
 			import_list = ScriptReader (file);
 		SortImportFiles ();
@@ -316,7 +320,7 @@ public partial class MainWindow : Gtk.Window
 
 		//here place for lastgen implementation
 
-		foreach (string file in grandchild_list) {
+		foreach (string file in grandchild_list.Distinct ()) {
 			string[] sliced_grandchild = file.Split (System.IO.Path.DirectorySeparatorChar);
 			string father = child_dir + sliced_grandchild [1] + System.IO.Path.DirectorySeparatorChar + sliced_grandchild [2];
 			Pack (file, father);
@@ -324,7 +328,7 @@ public partial class MainWindow : Gtk.Window
 		}
 		grandchild_list.Clear ();
 
-		foreach (string file in child_list) {
+		foreach (string file in child_list.Distinct()) {
 			string[] sliced_child = file.Split (System.IO.Path.DirectorySeparatorChar);
 			string father = parent_dir + sliced_child [1];
 			Pack (file, father);
