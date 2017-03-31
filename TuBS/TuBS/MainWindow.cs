@@ -310,7 +310,7 @@ public partial class MainWindow : Gtk.Window
 		tb_list.Clear ();
 
 		progressbar.Text = "Status: Packing files";
-		progressbar.Fraction = 0.37;
+		progressbar.Fraction = 0.4;
 		Main.IterationDo (false);
 		Main.IterationDo (false);
 		foreach (string file in script_list)
