@@ -3,6 +3,7 @@ using System.IO;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.Collections.Generic;
+using Gtk;
 
 namespace TuBS
 {
@@ -109,6 +110,7 @@ namespace TuBS
 						byte hi_pix = palette.GetIndex(bmp.GetPixel (j, i));
 						ttx_pixel += (byte)(hi_pix << 4);
 						writer.Write (ttx_pixel);
+						Main.IterationDo (false);
 					}
 				writer.Flush ();
 				writer.Close ();
@@ -119,8 +121,10 @@ namespace TuBS
 				writer.BaseStream.Position = 32 + palette_size;
 				//image writing
 				for (int i = 0; i < bmp.Height; i++)
-					for (int j = 0; j < bmp.Width; j++) 
-						writer.Write(palette.GetIndex (bmp.GetPixel (j, i)));
+					for (int j = 0; j < bmp.Width; j++) {
+						writer.Write (palette.GetIndex (bmp.GetPixel (j, i)));
+						Main.IterationDo (false);
+					}
 
 				writer.Flush ();
 				writer.Close ();
@@ -131,8 +135,10 @@ namespace TuBS
 				writer.BaseStream.Position = 32 + palette_size;
 				//image writing
 				for (int i = 0; i < bmp.Height; i++)
-					for (int j = 0; j < bmp.Width; j++) //Color pixel = bmp.GetPixel (j, i);
-						writer.Write(palette.GetIndex (bmp.GetPixel (j, i)));
+					for (int j = 0; j < bmp.Width; j++) { //Color pixel = bmp.GetPixel (j, i);
+						writer.Write (palette.GetIndex (bmp.GetPixel (j, i)));
+						Main.IterationDo (false);
+					}
 
 				writer.Flush ();
 				writer.Close ();
