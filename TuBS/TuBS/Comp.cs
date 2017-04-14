@@ -114,13 +114,11 @@ namespace TuBS
 					b = 0;
 					h = 0;
 					if (f1buf [i] == f1buf [pos]) {
-						try {
-							for (h = 0; f1buf [i + h] == f1buf [pos + h] && (pos + h) < f1len && pos - i <= 0x2000 && b <= 0xff;) {
-								b++;
-								h++;
-							}
-						}
-						catch {
+						for (h = 0; f1buf [i + h] == f1buf [pos + h] && (pos + h) < f1len && pos - i <= 0x2000 && b <= 0xff;) {
+							b++;
+							h++;
+							if (i + h == f1buf.Length | pos + h == f1buf.Length)
+								break;
 						}
 					} else
 						continue;
