@@ -100,6 +100,10 @@ public partial class MainWindow : Gtk.Window
 			while (end_flag == false) {
 				//cur_line = script_reader.ReadLine ();
 				char [] ch = cur_line.ToCharArray ();
+				if (ch [0] == '#') { //comment line
+					cur_line = script_reader.ReadLine ();
+					continue; 
+				}
 				for (int i = 0; i < ch.Length; i++) {
 					if (ch [i] == '▲')
 						writer.Write ((ushort)44544);
@@ -123,9 +127,9 @@ public partial class MainWindow : Gtk.Window
 							i--;
 							writer.Write (FindChar ('<', code_page, original_code_page));
 						}
-					} else if (ch [i] == '>')
+					} else if (ch [i] == '>') {
 						writer.Write ((ushort)38144);
-					else if (ch [i] == '●') {
+					} else if (ch [i] == '●') {
 						writer.Write ((ushort)32769);
 						if (cirflag == false) {
 							cir_match = cir_regex.Match (cur_line);
@@ -134,6 +138,8 @@ public partial class MainWindow : Gtk.Window
 							cir_match = cir_match.NextMatch ();
 						writer.Write (ushort.Parse (cir_match.Groups [1].Value));
 						i += cir_match.Length - 1;
+					} else if (ch [i] == '#') { //comment on the same line
+						break;
 					} else
 						writer.Write (FindChar (ch [i], code_page, original_code_page));
 				}
