@@ -98,7 +98,7 @@ public partial class MainWindow : Gtk.Window
 		writer_dat4.BaseStream.Position = 368L;
 
 		progressbar.Text = "Status: DATA3 rebuilding";
-		progressbar.Fraction = 0.4;
+		progressbar.Fraction = 0.6;
 		Main.IterationDo (false);
 
 		int[] new_flag = new int[236];
@@ -132,7 +132,7 @@ public partial class MainWindow : Gtk.Window
 				writer_dat3.Write (buffer);
 				offset_container = (int)writer_dat3.BaseStream.Length;
 			}
-			progressbar.Fraction = 0.4 + ((double)offset_container / reader_dat3.BaseStream.Length) * 0.6;
+			progressbar.Fraction = 0.6 + ((double)offset_container / reader_dat3.BaseStream.Length) * 0.4;
 			Main.IterationDo (false);
 		}
 		writer_dat3.Write (new byte[1073741824L - writer_dat3.BaseStream.Position]);
@@ -285,7 +285,7 @@ public partial class MainWindow : Gtk.Window
 		foreach (string file in ttx_list) {
 			progressbar.Text = "Status: Converting image: " + file;
 			i++;
-			progressbar.Fraction = ((double)i / ttx_list.Count * 0.30);
+			progressbar.Fraction = ((double)i / ttx_list.Count * 0.50);
 			Main.IterationDo (false);
 			Main.IterationDo (false);
 			string ttx = out_dir + file.Substring (0, file.Length - 4);
@@ -299,7 +299,7 @@ public partial class MainWindow : Gtk.Window
 		foreach (string file in tb_list) {
 			progressbar.Text = "Status: Converting image: " + file;
 			i++;
-			progressbar.Fraction = 0.3 + ((double)i / tb_list.Count * 0.05);
+			progressbar.Fraction = 0.5 + ((double)i / tb_list.Count * 0.05);
 			Main.IterationDo (false);
 			Main.IterationDo (false);
 			string screen = out_dir + file.Substring (0, file.Length - 4) + System.IO.Path.DirectorySeparatorChar;
@@ -310,7 +310,7 @@ public partial class MainWindow : Gtk.Window
 		tb_list.Clear ();
 
 		progressbar.Text = "Status: Packing files";
-		progressbar.Fraction = 0.4;
+		progressbar.Fraction = 0.58;
 		Main.IterationDo (false);
 		Main.IterationDo (false);
 		foreach (string file in script_list)
@@ -323,6 +323,8 @@ public partial class MainWindow : Gtk.Window
 		foreach (string file in grandchild_list.Distinct ()) {
 			string[] sliced_grandchild = file.Split (System.IO.Path.DirectorySeparatorChar);
 			string father = child_dir + sliced_grandchild [1] + System.IO.Path.DirectorySeparatorChar + sliced_grandchild [2];
+			progressbar.Text = "Status: Packing " + file + " in " + father;
+			Main.IterationDo (false);
 			Pack (file, father);
 			child_list.Add (father);
 		}
@@ -331,6 +333,8 @@ public partial class MainWindow : Gtk.Window
 		foreach (string file in child_list.Distinct()) {
 			string[] sliced_child = file.Split (System.IO.Path.DirectorySeparatorChar);
 			string father = parent_dir + sliced_child [1];
+			progressbar.Text = "Status: Packing " + file + " in " + father;
+			Main.IterationDo (false);
 			Pack (file, father);
 			parent_list.Add (father);
 		}

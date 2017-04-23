@@ -114,7 +114,7 @@ namespace TuBS
 					}
 				writer.Flush ();
 				writer.Close ();
-				// 8bpp. Needs palette rearrange. BGR 555 palette.
+			// 8bpp. Needs palette rearrange. BGR 555 palette.
 			} else if (palette_type == 0x02) {
 				PaletteBGR palette = new PaletteBGR (output);
 				BinaryWriter writer = new BinaryWriter ((Stream)new FileStream (output, FileMode.Open));
@@ -128,7 +128,7 @@ namespace TuBS
 
 				writer.Flush ();
 				writer.Close ();
-				// 8bpp. Needs palette rearrange. RGBA.
+			// 8bpp. Needs palette rearrange. RGBA.
 			} else {
 				PaletteRGBA8 palette = new PaletteRGBA8 (output);
 				BinaryWriter writer = new BinaryWriter ((Stream)new FileStream (output, FileMode.Open));

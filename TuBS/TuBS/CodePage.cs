@@ -220,22 +220,17 @@
 				"＠＠＠＠＠＠＠＠＠").ToCharArray ();
 		} else {
 			if (num == 0)
-				return ("王国暦６１９年２月帝都レオグラードは人々その狂信的な政治体制に恐れおいてた東部三を手中収めゼフロス将軍幼マナリ擁しサキア要塞陣構え配下万兵らび彼幕う多く民訴こ対ァイルバムタン守り二残自六率目指" +
-					"ベ子る由ヴェ総勢ユト・ハ方面か伺あィボニシノ一地圧帰城途上っ、立ち寄村でテ驚べき情報がもさ教皇ウヌズ団支脱出妃とす助け求仰ぐ草新派心旧間激抗争始ま３奪回進窺").ToCharArray ();
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"/[]&\u3000".ToCharArray ();
 			if (num == 1)
 				num = 2457;
 			if (num == 2)
 				num = 2460;
 			if (num == 4)
-				return ("リース達がナルヴィアを後にしたその頃‥大陸東部では王都バレムタイン脱出ファサ軍率いて帝帰還目指国暦６２０年月六万とゼロるマ三ザドッツ平野激突戦わずか３時間側圧倒的勝利終こ壊滅皇子逃亡中下よっ殺" +
-					"害されあ一方、制教対副官クトゥ竜騎士団急襲民衆ら共囚穏健派神解放ウヌ殿行くますヶぶり歓喜も迎え入内乱結キ砦シェ女妃密やな会合持本調印両休・友好条約骨定めラズベ５息人々う日宰相地位就き幼補佐役将" +
-					"事託単身北辺境へ旅立自存在新火種恐同盟諸侯強要望公爵継承第代載冠式続婚礼各多数詰掛け久賑見せ巫ボ司長工夫妻ミオニ並びどギ祝福和到来宴手差伸べ先セ服包んだ若彼寄添可憐弾ば笑顔デ著記\u3000１７４章").ToCharArray ();
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"/[]&\u3000".ToCharArray ();
 			if (num == 6)
-				return ("王国暦６１９年、秋バルモア地方に生まれた民衆解放軍＜自由ヴェリ＞はそを率いるセレニの乙女圧倒的なカスマ性と団運用巧さが相ってわずか数ヶ月間諸都市シノンディナ南部す至こ帝失将兵二万余も及びラーズ" +
-					"中長引く遠征不満漏ら者現始め寝返り総督ピ伯爵状況狼狽し事態打開道探公ザツハイムで‥頃本拠館同じタ司令官ファサ皇子苛立ち募せ").ToCharArray ();
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"/[]&\u3000".ToCharArray ();
 			if (num == 11)
-				return ("王国暦６１９年、春四部同盟を率いて目覚まし活躍見せたディアナ公爵ベルードは海に浮かぶ孤島流刑の身となっさら追打ちけるようセレニ軍前帝が誇名将＜竜騎士ゼフロス＞現れ諸侯急襲始めも一人声支えバント" +
-					"奮闘わず徐々瓦解兆こ都ザツヘイムで‥方東本拠地リオタヴェ占領す宮総司令官ァサ皇子日快楽溺面ラ州展開再び増強重要点ほんど奪ズク最後砦あマゲ塞守内立隊収容").ToCharArray ();
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"/[]&\u3000".ToCharArray ();
 			if (num == 13) {
 				if (name == "mission.ar")
 					num = 2261;
@@ -243,55 +238,43 @@
 					num = 2449;
 				if (name == "areanml.ar")
 					return "ABCD\u3000EFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]".ToCharArray ();
+				if (name == "townarea.ar")
+					return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000".ToCharArray ();
 			}
 			if (num == 14) {
 				if (name == "sysfont.ar")
 					num = 549;
+				if (name == "helpmsg.ar")
+					return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000".ToCharArray ();
+				if (name == "helpmsgb.ar")
+					return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000".ToCharArray ();
+				if (name == "smenui.ar")
+					return "ABCD\u3000EFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]".ToCharArray ();
 			}
 			if (num == 549)  //same as 14.sysfont
-				return ("ロードハイアポステル槍兵騎帝国農民王士東方剣ボウナトランガオパディュクブッジェネゴ斧装甲ギ弓石重狙撃工補給マセリダバタ渡り戦聖ォシフグ頭目山賊海馬盗サビ修道プ司祭僧ャズ神官教暗黒雪砂族公爵悪党" +
-					"ァノピレヤ詩人崩れ建造物ム一般市男性少年中老女貴村配若い秘書店主（やせ）太おかみさんじ紳系奥青姉妃ホメ船乗巫伯長錬金術宮廷ヴコゼカソペエ短予備壊たョミツキ軍用正式旧妖刀殺ベチニヒ大ザ房試昨への" +
-					"破盾熱氷河雷雲つるはし粉砕ワ手速射三連魔ヌ弩軽ど２３４炎ゥ１５６７８９Ⅱケ光丸風闇＋上級Ｓ形火烈輝ＭＬ将邪木矢銅鉄鋼致命眠毒貫き新型精度腕輪俊敏守力祈護符奇跡癒流星月陽巨天白虎鳳凰煉獄無双指竜" +
-					"鱗飛ⅠⅢ財宝扉筋薬体消携帯袋気付け鎮静剤貨銀水晶草束集編帽子尻が小箱婦肖像画帰還失額飾橋設計図整引竪琴普通元な丈夫頑強駿モ死だら灼板素材眼皮ゲ隕曜ユ塵羽糸古代呪液琥珀捕獲仔食料にえ虜玉座間鍵牢" +
-					"闘自動生成名０城門壁部Ｐ捨て置場\u3000脱走Ｘ森第四団同盟空巣ゾ増援隊伝令境送輸戒警義勇支ヨ衛包囲傭砦街二ぎ験処刑駐留信者十父母防揮五六巡礼救赤兄弟偵察狩猟住看七収容所徳逃亡側近御柵本営資倉庫舎監視" +
-					"徒突哨翼吏買鍛冶屋員雑娘未定婆供入西合行商従こ説明係開始案内墓客使憲仮面酒酔っぱ諜番平地荒林密麓岳川浅瀬／湖洞窟旗都落跳階段殿床回復垣崖家灯台館塔会宿原沼茂院特殊歩別齢歳職業出身Ｃｏｓｔ？妻妹" +
-					"前不能産量在数武具拠点規ＨＷｐ税全そ他表示切替すべ要助以外あ移範ち止位調ＢＧＥ標準高最初期ＯＮＦ攻操振機選択低時簡易比較順序告経路勢識敵効果Ｒ下継続待確認情報終了両親・恋と友君対種類価格足完品" +
-					"状況器雇掛絨毯磁花瓶鳥【活】彫希望豪華現持残有覧う売預却耐久受賞首蝉亭仕利貸副侍学検索並理功率依頼：任務を見章まで制難−ヘ師販属練提条件求請払ＹＡＤ差込口更決戻断記録損登執室［］心傷多今も！取" +
-					"挑発威嚇降伏態奪わ応急覚めｉｆｅ何離姿げ交換く唱避睡混乱被反減耗法加「」幸運得値技昇事錠、再後先程隠熟％相怒分ひ結界味舞様早倒干封む周必次進距泳ぐ探隣接投擲的変健虚弱愛徐々ご略篭解除居。但潜‥" +
-					"疾限改宗詠等追迷彩．倍夜襲ず当半己算乙衰峰打可抜＃＄＆専保存ＩＪＫＱＴＵＶＺａｂｃｄｇｈｊｋｌｍｎｑｒｕｖｗｘｙｚぁぃぅぇぉざぜぞぢづぬねばぴびふぶぷぺほぼぽゃゅゆょよろゎゐゑヂヅヮヰヱヲヵヶ" +
-					"私管机八九由討伐撤退線梁血谷沈黙英雄…達非鉱霧願実訓壇逆珠割幽霊誇労働島夢弾泥棒治固過忘意紙謎絆遠亜麻訪問站基異燃贈約悩廃誘拐真魅惑香旅永嘆瞳漢模擬汚放疑偽世争尋寡孤語春滅背立責叙勲声証稼彼潮" +
-					"共裏償日純休負好苦戸締注粗牛羊野兎蜂蜜煮鶏茸焼羅貝柱魚蒸季苺盛卵菜布涙象牙鏡文紋芝衣縛網髮荷繁港郊区議広衆堂典劇占節牧園紹介埠謁丘庭邸宅演習南").ToCharArray ();
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000".ToCharArray ();
 			if (num == 552)  //same as 14.namene
-				return ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000用馬ジベチブ神官長\u3000" +
-					"タハャ兵脱走プＸガ山賊森の民ピ帝国第四団ゴ盗同盟ボカ空巣ソ旧ノツ海ゾキケゥホユコヘュゲ市公爵夫人司祭村増援隊伝令工モ境守騎輸送警戒義勇支ヨワ護衛包囲狙撃傭砦街道二三暗黒かせぎヤ竜弓試験ヌビヒ" +
-					"処刑ポ駐留信者十父母防指揮五六氷新補給砂族火巡礼救赤い兄弟偵察狩猟住飛看七捕虜収容所悪徳（逃亡中）側近御柵本営資財倉庫槍舎斧監視がり徒突強射手哨翼吏買僧ョ鍛冶屋店員雑貨娘男王子未設定老婆少女" +
-					"供入西連合将伯行商宮廷従木こ仔説明係開始案内墓客使憲船仮面酒酔っぱら間諜婦番戦短壊れた正式妖刀殺大房作破盾熱河雷雲つはし粉砕速魔聖石弩軽重ど炎Ⅱ光丸風闇＋上級Ｓ方形烈輝ＭＬ邪矢青銅鉄鋼致" +
-					"命眠毒貫型精度腕輪俊敏力祈符奇跡癒流星月太陽巨天教白虎鳳凰煉獄無双鱗ⅠⅢ宝筋秘薬さ体消気付け鎮静剤金銀水晶草束詩集編み帽尻小箱肖像画帰還失額飾橋計図整引書竪琴や普通元な丈頑駿死んだ灼板素" +
-					"材眼皮隕曜塵羽糸古代呪液琥珀獲食料にえ玉座鍵牢平地荒林密麓岳川浅瀬／湖洞窟旗都落跳階段殿床回復垣崖家灯台館塔会宿雪原沼茂修院特殊歩般性別年齢歳職業出身Ｃｏｓｔ物？妻姉妹前不能産量在数武具拠" +
-					"点規ＨＷｐ税全術そ他表示切替すべ要助以外あ移範ち止位調ＢＧＥ標準高最初期ＯＮＦ攻操振機選択低時簡易比較順序告経路勢識敵効果Ｒ下継続待確認情報終了両親・恋と友主君対種類価格足完品状況器雇掛絨" +
-					"毯磁花瓶鳥【活】彫希望豪華現持残有渡覧う売預却耐久受賞首蝉亭お仕錬利貸副侍学検索並理功率依頼：任務を見章まで制難−へ師販属貴練提条件求請払ＹＡＤ差込口更決戻断記録損登執室［］心配傷多今も！" +
-					"取挑発威嚇降伏態奪わ応急目覚めｉｆｅ何離姿げ乗交換く唱避睡混乱被反減耗法加「」幸運得値技昇事錠、再後先程隠熟％相怒分ひ結界味舞様早倒若干封じむ装巫周必次建進距泳ぐ探隣接投擲的変健虚弱愛徐々" +
-					"ご略篭解除居。但潜‥疾限改宗詠等追迷彩．倍夜襲ず当半己算乙衰峰打可抜＃＄＆専保存ＩＪＫＱＴＵＶＺａｂｃｄｇｈｊｋｌｍｎｑｒｕｖｗｘｙｚぁぃぅぇぉざぜぞぢづぬねばびぴふぶぷぺほぼぽゃゅゆょよ" +
-					"ろゎゐゑヂヅヮヰヱヲヵヶ").ToCharArray ();
-			//		if (num == 2256) {
-			//		if (num == 2257) {
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000".ToCharArray ();
+			if (num == 2256)
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000".ToCharArray ();
+			if (num == 2257)
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"/[]&\u3000".ToCharArray ();
 			if (num == 2261)  //same as 13.mission
 				return "ABCD\u3000EFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]".ToCharArray ();
 			if (num == 2263)
-				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000不利離かある壊上策".ToCharArray ();
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000".ToCharArray ();
 			if (num == 2264)
-				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.,!?:;()-'\"~+/*%[]\u3000しょ".ToCharArray ();
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz.,!?:;()-'\"~+/*%[]\u3000".ToCharArray ();
 			if (num == 2265)
-				return ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000ん（通常）味方仲間う一人も対象" +
-					"え状態あば全員そり条件同様戦闘不能睡眠１").ToCharArray ();
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000".ToCharArray ();
 			if (num == 2266)
-				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000必要（ただずＨＰ１残）".ToCharArray ();
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000".ToCharArray ();
 			if (num == 2267)
-				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0.,!?:;-'\"~+/*%\u3000りき".ToCharArray ();
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0.,!?:;-'\"~+/*%\u3000".ToCharArray ();
 			if (num == 2268)
 				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000Ⅳ".ToCharArray ();
 			if (num == 2269)
-				return ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000き特徴時キル先制射付加").ToCharArray ();
+				return ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000").ToCharArray ();
 			if (num == 2270)
 				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000ⅤⅩ".ToCharArray ();
 			if (num == 2271)
@@ -311,25 +294,23 @@
 				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000Ⅰ".ToCharArray ();
 			if (num == 2278)
 			if (num == 2279)
-				return "攻略のヒント（１）２３４５６７８９０／続きを読む".ToCharArray ();
+				return "攻略のヒント(1)234567890/続きを読む".ToCharArray ();
 			if (num == 2284)
-				return ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000鴨こが血香ばし食欲そます羊リヌ" +
-					"ガックやオニな陶器詰め込固伶製兎蜂蜜加え芳醇後引女性大レジ煮ょセあるウサギ爽デャミ挽卵ル調ドブ若鶏ム乳小麦粉作心温ホ寒季節代名詞給アナ好物キ軽丸外パ中鳥茸ヴィ産ピポ豚甘辛添メヤ草特有豊比較的安" +
-					"価近所評判骨べれマ呼タ腹膨甲羅蟹ほぐ単純素材出エハプ感せ貝柱白ラベ身皮下脂倍増バ隠ネ火通ノコ前胃魚風淡泊蒸注文多商海幸栄養満点！厚切美爪ご２本〜口？ゲ衣山ダ緑黄色盛合わ四朴家庭ズ地方採子様薫具" +
-					"良へよボヨ薄木入低包苺酸ぱぺ黒ョ炒…ケツ神言伝杯表ひグ更別「び」ゆ半熟客要望応ォ酒").ToCharArray ();
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000".ToCharArray ();
 			if (num == 2449)  // same as 13.evitem
-				return ("ABCD\u3000EFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]難されンテロプ盾置物際" +
-					"じゅん私室入口敷ノ織逸リー故郷懐かむコッファ事収納お家具時折前持ち主ま忘出タペト豪華鳥躍動感目粒宝石名画【復活】破壊再生モチ描有絵今亡悲運天才ミレ作乙女彫像美気分落着良香箱財そだ中身ぽ調" +
-					"べみ‥希望一性肖見心語ベド素材職腕駆休疲癒？青水晶指輪込店セバ妻形ジュ草薬解熱料詩集神々関記述始酒場会男切秘地図ネパ海賊王伝説・手編帽子誕日姉贈温雪割永久凍土え続命力や冷雷矢尻必要光宿ボ" +
-					"小ブ街撤退単騎猛烈追撃来士婦ラズ若毒特殊合紙へ宛謎包言預弓屋原木村森伐採ニ麻布産サウ仕修道院ザ防衛任務就恋添暗殺計書ェ涙古び装備二式託デ東息珍毛重象牙鏡ろ闘技ケ対（１）送回２３４５６７８" +
-					"情報文帝国軍潜せ兵受取グ頼疫病効無ば犠牲者増鉱山夫ゴ掘ＨＢ設精密廃ユ造残骸背面貴族現在未竪琴弦本芝居衣旅座ガ駿馬方教玉間鍵扉開牢獄聖司祭深傷縛網発隠メ真珠川髪飾孫娘結婚注オ戻所絶的御与わ" +
-					"荷ム愛詳細表示").ToCharArray ();
-			//		if (num == 2455)
-			//		if (num == 2456)
-			//		if (num == 2457)
-			//		if (num == 2458)
-			//		if (num == 2459)
-			//		if (num == 2460)
+				return "ABCD\u3000EFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]".ToCharArray ();
+			if (num == 2455)
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"/[]&\u3000".ToCharArray ();
+			if (num == 2456)
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"/[]&\u3000".ToCharArray ();
+			if (num == 2457)
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"/[]&\u3000".ToCharArray ();
+			if (num == 2458)
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"/[]&\u3000".ToCharArray ();
+			if (num == 2459)
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"/[]&\u3000".ToCharArray ();
+			if (num == 2460)
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"/[]&\u3000".ToCharArray ();
 			if (num == 2462)
 				return "一回戦聖騎士ルヴィＶＳテンスベガー\u3000対ニドチェ決勝自由バジ".ToCharArray ();
 			else

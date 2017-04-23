@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using Gtk;
 
 namespace TuBS
 {
@@ -106,6 +107,7 @@ namespace TuBS
 			buffer = new byte[f1len * 2];
 
 			while (pos < f1len) {
+				Main.IterationDo (false);
 				c=0;
 				len=0;
 				for (int i = 0; i < pos && pos <= f1len; i++) {
