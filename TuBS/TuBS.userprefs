@@ -1,1 +1,24 @@
-﻿<Properties StartupItem="TuBS/TuBS.csproj" />
+﻿<Properties StartupConfiguration="{D654022E-2B7F-40D1-8F8D-B0A254D16AF4}|Default" StartupItem="TuBS/TuBS.csproj">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="1402" column="1" />
+      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="1403" column="1" />
+      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="624" column="1" />
+      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="648" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="TuBS/MainWindow.cs">
+    <Files>
+      <File FileName="TuBS/MainWindow.cs" Line="119" Column="26" />
+      <File FileName="TuBS/EmptyClass.cs" Line="13" Column="2" />
+      <File FileName="TuBS/CodePage.cs" Line="262" Column="39" />
+      <File FileName="TuBS/ImportScript.cs" Line="1" Column="1" />
+      <File FileName="TuBS/ExportScript.cs" Line="1" Column="1" />
+      <File FileName="TuBS/ImageConv.cs" Line="1" Column="1" />
+      <File FileName="TuBS/Comp.cs" Line="3" Column="11" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.TuBS PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>
