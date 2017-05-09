@@ -13,4 +13,4 @@ Use Xamarin Studio or Visual Studio to compile.
 Place DATA3.DAT, DATA4.DAT and TuBS.exe in one folder, then run.  
   
   
-Contact me via twitter https://twitter.com/Lightgazer
+Contact me via twitter https://twitter.com/Lightgazer or Telegram @Lightgazer
