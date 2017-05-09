@@ -187,6 +187,10 @@ namespace TuBS
 
 			for (int i = 0; i < palette_size / 4; i++) {
 				int dev = Math.Abs (paletteA [i] - color.A) + Math.Abs (paletteR [i] - color.R) + Math.Abs (paletteG [i] - color.G) + Math.Abs (paletteG [i] - color.B);
+				if (paletteA [i] == 0 & color.A == 0) {
+					index = (byte)i;
+					break;
+				}
 				if (maxdev > dev) {
 					index = (byte)i;
 					maxdev = dev;
@@ -235,6 +239,10 @@ namespace TuBS
 
 			for (int i = 0; i < 16; i++) {
 				int dev = Math.Abs (paletteA [i] - color.A) + Math.Abs (paletteR [i] - color.R) + Math.Abs (paletteG [i] - color.G) + Math.Abs (paletteG [i] - color.B);
+				if (paletteA [i] == 0 & color.A == 0) {
+					index = (byte)i;
+					break;
+				}
 				if (maxdev > dev) {
 					index = (byte)i;
 					maxdev = dev;
