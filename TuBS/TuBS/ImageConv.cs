@@ -47,7 +47,7 @@ namespace TuBS
 				return;
 			reader.ReadInt32 (); //zeros
 			int bpp = reader.ReadInt32 (); 
-			reader.ReadInt32 (); //image size
+			reader.ReadInt32 (); //image size in bytes
 			int width = reader.ReadInt32 ();
 			int height = reader.ReadInt32 ();
 			int palette_type = reader.ReadInt32 (); //2 - BGR555, 0 - RGBA

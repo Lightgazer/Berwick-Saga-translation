@@ -53,7 +53,7 @@
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
                 <property name="Type">TextOnly</property>
-                <property name="Label" translatable="yes">Make New</property>
+                <property name="Label" translatable="yes">Make</property>
                 <property name="UseUnderline">True</property>
                 <signal name="Clicked" handler="OnSaveButtonClicked" />
               </widget>
@@ -63,13 +63,13 @@
               </packing>
             </child>
             <child>
-              <widget class="Gtk.Button" id="replace_button">
+              <widget class="Gtk.Button" id="refresh_button">
                 <property name="MemberName" />
                 <property name="CanFocus">True</property>
                 <property name="Type">TextOnly</property>
-                <property name="Label" translatable="yes">Replace</property>
+                <property name="Label" translatable="yes">Refresh</property>
                 <property name="UseUnderline">True</property>
-                <signal name="Clicked" handler="OnReplaceButtonClicked" />
+                <signal name="Clicked" handler="OnRefreshButtonClicked" />
               </widget>
               <packing>
                 <property name="Position">3</property>

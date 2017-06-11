@@ -274,12 +274,13 @@
 			if (num == 2268)
 				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000Ⅳ".ToCharArray ();
 			if (num == 2269)
-				return ("ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000").ToCharArray ();
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000".ToCharArray ();
 			if (num == 2270)
 				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000ⅤⅩ".ToCharArray ();
 			if (num == 2271)
 				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*\u3000[]".ToCharArray ();
-			//		if (num == 2272)
+			if (num == 2272)
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000".ToCharArray ();
 			if (num == 2273)
 				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000".ToCharArray ();
 			if (num == 2274)
@@ -292,9 +293,8 @@
 				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000Ⅱ".ToCharArray ();
 			if (num == 2278)
 				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000Ⅰ".ToCharArray ();
-			if (num == 2278)
 			if (num == 2279)
-				return "攻略のヒント(1)234567890/続きを読む".ToCharArray ();
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000".ToCharArray ();
 			if (num == 2284)
 				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000".ToCharArray ();
 			if (num == 2449)  // same as 13.evitem
@@ -312,7 +312,7 @@
 			if (num == 2460)
 				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"/[]&\u3000".ToCharArray ();
 			if (num == 2462)
-				return "一回戦聖騎士ルヴィＶＳテンスベガー\u3000対ニドチェ決勝自由バジ".ToCharArray ();
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000".ToCharArray ();
 			else
 				return ("？あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよらりるれろわをんがぎぐげござじずぜぞだぢづでどばびぶべぼぱぴぷぺぽっゃゅょぁぃぅぇぉアイウ" +
 				"エオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポッャュョァィゥェォヴゎヮ0123456789ABCDEFGHI" +

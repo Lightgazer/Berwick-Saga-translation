@@ -13,7 +13,7 @@ public partial class MainWindow
 	
 	private global::Gtk.Button save_button;
 	
-	private global::Gtk.Button replace_button;
+	private global::Gtk.Button refresh_button;
 	
 	private global::Gtk.ProgressBar progressbar;
 	
@@ -59,18 +59,18 @@ public partial class MainWindow
 		this.save_button.CanFocus = true;
 		this.save_button.Name = "save_button";
 		this.save_button.UseUnderline = true;
-		this.save_button.Label = global::Mono.Unix.Catalog.GetString ("Make New");
+		this.save_button.Label = global::Mono.Unix.Catalog.GetString ("Make");
 		this.hbox3.Add (this.save_button);
 		global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.save_button]));
 		w3.Position = 2;
 		// Container child hbox3.Gtk.Box+BoxChild
-		this.replace_button = new global::Gtk.Button ();
-		this.replace_button.CanFocus = true;
-		this.replace_button.Name = "replace_button";
-		this.replace_button.UseUnderline = true;
-		this.replace_button.Label = global::Mono.Unix.Catalog.GetString ("Replace");
-		this.hbox3.Add (this.replace_button);
-		global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.replace_button]));
+		this.refresh_button = new global::Gtk.Button ();
+		this.refresh_button.CanFocus = true;
+		this.refresh_button.Name = "refresh_button";
+		this.refresh_button.UseUnderline = true;
+		this.refresh_button.Label = global::Mono.Unix.Catalog.GetString ("Refresh");
+		this.hbox3.Add (this.refresh_button);
+		global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.hbox3 [this.refresh_button]));
 		w4.Position = 3;
 		this.vbox1.Add (this.hbox3);
 		global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.hbox3]));
@@ -111,6 +111,6 @@ public partial class MainWindow
 		this.unpack_button.Clicked += new global::System.EventHandler (this.OnUnpackButtonClicked);
 		this.import_button.Clicked += new global::System.EventHandler (this.OnImportButtonClicked);
 		this.save_button.Clicked += new global::System.EventHandler (this.OnSaveButtonClicked);
-		this.replace_button.Clicked += new global::System.EventHandler (this.OnReplaceButtonClicked);
+		this.refresh_button.Clicked += new global::System.EventHandler (this.OnRefreshButtonClicked);
 	}
 }

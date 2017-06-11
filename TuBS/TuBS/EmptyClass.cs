@@ -139,6 +139,7 @@ public partial class MainWindow : Gtk.Window
 		}
 		SortImportFiles ();
 		PrintImportFiles ();
+		reader.Close ();
 	}
 
 	public static void DeleteDirectory (string target_dir)

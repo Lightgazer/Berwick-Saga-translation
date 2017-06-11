@@ -47,7 +47,6 @@ public partial class MainWindow : Gtk.Window
 			string child_name = "";
 			for (char buf = reader.ReadChar (); buf != 0; buf = reader.ReadChar ())
 				child_name += (object)buf;
-			Main.IterationDo (false);
 			list_offset = reader.BaseStream.Position;
 			reader.BaseStream.Seek ((long)(16 + index * 12), SeekOrigin.Begin);
 			int offset = reader.ReadInt32 ();
@@ -190,8 +189,8 @@ public partial class MainWindow : Gtk.Window
 
 		string[] parent_files = System.IO.Directory.GetFiles (parent_dir);
 		for (int index = 0; index < parent_files.Length; ++index) {
-			progressbar.Text = "Status: " + (object)index + "/" + files_to_unpack.Length + " child unpacking";
-			progressbar.Fraction = 0.2 + ((double)(index + 1) / files_to_unpack.Length * 0.5);
+			progressbar.Text = "Status: " + (object)index + "/" + parent_files.Length + " child unpacking";
+			progressbar.Fraction = 0.2 + ((double)(index + 1) / parent_files.Length * 0.5);
 			Main.IterationDo (false);
 			UnpackTARC (parent_files [index], child_dir, out_dir);
 		}
@@ -348,21 +347,25 @@ public partial class MainWindow : Gtk.Window
 		progressbar.Fraction = 1;
 	}
 
-	protected void OnReplaceButtonClicked (object sender, EventArgs e)
+	protected void OnRefreshButtonClicked (object sender, EventArgs e)
 	{
-		string dat4 = "DATA4.DAT";
-		string dat3 = "DATA3.DAT";
-		string new_dir = "NEW" + System.IO.Path.DirectorySeparatorChar;
-		string newdat4 = new_dir + dat4;
-		string newdat3 = new_dir + dat3;
-		OnSaveButtonClicked (sender, e);
-		progressbar.Text = "Status: Replacing old files";
-		Main.IterationDo (false);
-		File.Delete (dat4);
-		File.Move (newdat4, dat4); 
-		File.Delete (dat3);
-		File.Move (newdat3, dat3); 
-		DeleteDirectory (new_dir);
-		progressbar.Text = "Status: Done";
+		string pathdat4 = "DATA4.DAT";
+		string pathdat3 = "DATA3.DAT";
+		if (!File.Exists (pathdat4))
+			progressbar.Text = "Status: " + pathdat4 + " not found";
+		else if (!File.Exists (pathdat3))
+			progressbar.Text = "Status: " + pathdat3 + " not found";
+		else 
+			progressbar.Text = "Status: Ready";
+		import_list.Clear ();
+		lastgen_list.Clear ();
+		grandchild_list.Clear ();
+		child_list.Clear ();
+		parent_list.Clear ();
+		script_list.Clear ();
+		ttx_list.Clear ();
+		tb_list.Clear (); 
+		if (File.Exists ("list.txt"))
+			ReadImportList ();
 	}
 }
