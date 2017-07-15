@@ -122,13 +122,13 @@ public partial class MainWindow : Gtk.Window
 							writer.Write (short.Parse (rgb_match.Groups [1].Value));
 							writer.Write (short.Parse (rgb_match.Groups [2].Value));
 							writer.Write (short.Parse (rgb_match.Groups [3].Value));
-							i = rgb_match.Index + rgb_match.Length;
+							i = rgb_match.Index + rgb_match.Length - 1;
 						} else {
 							i--;
 							writer.Write (FindChar ('<', code_page, original_code_page));
 						}
 					} else if (ch [i] == '>') {
-						writer.Write ((ushort)38144);
+						writer.Write ((ushort)38144); //9500h
 					} else if (ch [i] == '●') {
 						writer.Write ((ushort)32769);
 						if (cirflag == false) {

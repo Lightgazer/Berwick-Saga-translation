@@ -20,8 +20,10 @@ public partial class MainWindow : Gtk.Window
 			progressbar.Text = "Status: " + pathdat4 + " not found";
 		if (!File.Exists (pathdat3))
 			progressbar.Text = "Status: " + pathdat3 + " not found";
-		if (File.Exists ("list.txt"))
-			ReadImportList ();
+//		if (File.Exists ("list.txt"))
+//			ReadImportList ();
+		foreach (string list in Directory.EnumerateFiles(Directory.GetCurrentDirectory (), "list*.txt", SearchOption.TopDirectoryOnly))
+			ReadImportList (list);
 	}
 
 	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
@@ -165,7 +167,7 @@ public partial class MainWindow : Gtk.Window
 		string script_dir = "Script" + System.IO.Path.DirectorySeparatorChar;
 		progressbar.Text = "Status: Removing old folders";
 		Main.IterationDo (false);
-		Main.IterationDo (false); // я знаю почему, но он не понимает с первого раза
+		Main.IterationDo (false);
         if (System.IO.Directory.Exists (parent_dir))
 			DeleteDirectory (parent_dir);
 		if (System.IO.Directory.Exists (child_dir))
@@ -312,9 +314,10 @@ public partial class MainWindow : Gtk.Window
 		progressbar.Fraction = 0.58;
 		Main.IterationDo (false);
 		Main.IterationDo (false);
-		foreach (string file in script_list)
+		foreach (string file in script_list) {
 			import_list = ScriptReader (file);
-		SortImportFiles ();
+			SortImportFiles ();
+		}
 		script_list.Clear ();
 
 		//here place for lastgen implementation
@@ -365,7 +368,7 @@ public partial class MainWindow : Gtk.Window
 		script_list.Clear ();
 		ttx_list.Clear ();
 		tb_list.Clear (); 
-		if (File.Exists ("list.txt"))
-			ReadImportList ();
+		foreach (string list in Directory.EnumerateFiles(Directory.GetCurrentDirectory (), "list*.txt", SearchOption.TopDirectoryOnly))
+			ReadImportList (list);
 	}
 }

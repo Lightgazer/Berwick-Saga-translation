@@ -129,9 +129,9 @@ public partial class MainWindow : Gtk.Window
 			textview.Buffer.Text += item + "\n";
 	}
 
-	protected void  ReadImportList ()
+	protected void  ReadImportList (string list)
 	{
-		StreamReader reader = new StreamReader (new FileStream ("list.txt", FileMode.Open));
+		StreamReader reader = new StreamReader (new FileStream (list, FileMode.Open));
 		string item = reader.ReadLine ();
 		while (item != null) {
 			import_list.Add (item);
