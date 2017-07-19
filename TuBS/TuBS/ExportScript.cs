@@ -10,12 +10,21 @@ using System.Collections.Generic;
 
 public partial class MainWindow : Gtk.Window
 {
+	protected string GetActor (ushort num)
+	{
+//		string[] actors = { "Priest", "Reese", "Ward", "Villager" };
+//		if (num < actors.Length)
+//			return actors [num];
+		return num.ToString ();
+	}
+
 	protected List<string> DumpText (FileInfo file, char[] code_page)
 	{
 		List<string> script = new List<string> ();  
 		BinaryReader reader = new BinaryReader ((Stream)new FileStream (file.FullName, FileMode.Open));
 		string str = "";
 		string strsq = "";
+		string comment = "#";
 
 		while (reader.BaseStream.Position < reader.BaseStream.Length) {
 			ushort num1 = reader.ReadUInt16 ();
@@ -35,9 +44,13 @@ public partial class MainWindow : Gtk.Window
 			else if ((int)num1 == 44544)
 				str += "▲";
 			else if ((int)num1 == 33024) { // window end
+				if(comment.Length > 1)
+					script.Add (comment);
 				script.Add (str);
 				script.Add ("-----------------------");
 				str = "";
+				comment = "#";
+	        //info bytes
 			} else if ((int)num1 == 35074) {
 				str += "■";
 				reader.BaseStream.Position -= 2;
@@ -45,10 +58,31 @@ public partial class MainWindow : Gtk.Window
 				for (int i = 0; i < 6; i++)
 					strsq += reader.ReadByte () + ".";
 				strsq += "]";
-			} else if ((int)num1 == 32024 || (int)num1 == 39168 || (int)num1 == 39424 || (int)num1 == 33280 || (int)num1 == 39936 || (int)num1 == 47104) { //some strange chars
+			} else if ((int)num1 == 39168) { //upper window
 				str += "■";
 				reader.BaseStream.Position -= 2;
 				strsq += "[" + reader.ReadByte () + "." + reader.ReadByte () + ".]";
+				comment += " Position: Up;";
+			} else if ((int)num1 == 39424) { //lower window	
+				str += "■";
+				reader.BaseStream.Position -= 2;
+				strsq += "[" + reader.ReadByte () + "." + reader.ReadByte () + ".]";
+				comment += " Position: Down;";
+			} else if ((int)num1 ==2024 || (int)num1 == 33280 || (int)num1 == 39936 || (int)num1 == 47104) { //some strange chars
+				str += "■";
+				reader.BaseStream.Position -= 2;
+				strsq += "[" + reader.ReadByte () + "." + reader.ReadByte () + ".]";
+			} else if ((int)num1 == 41985) { //actor tag
+				ushort actorn = reader.ReadUInt16 ();
+				comment += " Actor: " + GetActor(actorn) + ";";
+				str += "■";
+				reader.BaseStream.Position -= 4;
+				strsq += "[";
+				for (int i = 0; i < 4; i++)
+					if (reader.BaseStream.Position < reader.BaseStream.Length) {
+						strsq += reader.ReadByte () + ".";
+					}
+				strsq += "]";
 			} else { 
 				str += "■";
 				reader.BaseStream.Position -= 2;
