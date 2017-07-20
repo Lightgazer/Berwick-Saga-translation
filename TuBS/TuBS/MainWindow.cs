@@ -168,48 +168,48 @@ public partial class MainWindow : Gtk.Window
 		progressbar.Text = "Status: Removing old folders";
 		Main.IterationDo (false);
 		Main.IterationDo (false);
-//        if (System.IO.Directory.Exists (parent_dir))
-//			DeleteDirectory (parent_dir);
-//		if (System.IO.Directory.Exists (child_dir))
-//			DeleteDirectory (child_dir);
-//		if (System.IO.Directory.Exists (out_dir))
-//			DeleteDirectory (out_dir);
-//		if (System.IO.Directory.Exists (last_dir))
-//			DeleteDirectory (last_dir);
-//        System.IO.Directory.CreateDirectory (parent_dir);
-//        System.IO.Directory.CreateDirectory (child_dir);
-//        System.IO.Directory.CreateDirectory (out_dir);
-//		System.IO.Directory.CreateDirectory (last_dir);
-//		for (int index = 0; index < files_to_unpack.Length; ++index) {
-//			progressbar.Text = "Status: " + (object)index + "/" + files_to_unpack.Length + " extraction";
-//			progressbar.Fraction = (double)(index + 1) / files_to_unpack.Length * 0.2;
-//			Main.IterationDo (false);
-//			ExtractTARC (files_to_unpack [index], parent_dir);
-//		}
-//		File.Move(parent_dir + "15", out_dir + "15"); //needs special treatment
-//		File.Move(parent_dir + "2916", out_dir + "2916"); //ttx image
-//
-//		string[] parent_files = System.IO.Directory.GetFiles (parent_dir);
-//		for (int index = 0; index < parent_files.Length; ++index) {
-//			progressbar.Text = "Status: " + (object)index + "/" + parent_files.Length + " child unpacking";
-//			progressbar.Fraction = 0.2 + ((double)(index + 1) / parent_files.Length * 0.5);
-//			Main.IterationDo (false);
-//			UnpackTARC (parent_files [index], child_dir, out_dir);
-//		}
-//
-//		string[] child_tarc_dirs = System.IO.Directory.GetDirectories (child_dir);
-//		for (int index = 0; index < child_tarc_dirs.Length; ++index) {
-//			progressbar.Text = "Status: " + (object)index + "/" + child_tarc_dirs.Length + " grandchild unpacking";
-//			progressbar.Fraction = (double)0.7 + ((double)(index + 1) / child_tarc_dirs.Length * 0.2);
-//			Main.IterationDo (false);
-//			string sliced_tarc_dir = new FileInfo (child_tarc_dirs [index]).Name;
-//			string grandchild_dir = out_dir + sliced_tarc_dir + System.IO.Path.DirectorySeparatorChar;
-//			string lastgen_dir = last_dir + sliced_tarc_dir + System.IO.Path.DirectorySeparatorChar;
-//			string[] child_tarcs = System.IO.Directory.GetFiles (child_tarc_dirs [index]);
-//			for (int i = 0; i < child_tarcs.Length; ++i) {
-//				UnpackTARC (child_tarcs [i], lastgen_dir, grandchild_dir);
-//			}
-//		}
+        if (System.IO.Directory.Exists (parent_dir))
+			DeleteDirectory (parent_dir);
+		if (System.IO.Directory.Exists (child_dir))
+			DeleteDirectory (child_dir);
+		if (System.IO.Directory.Exists (out_dir))
+			DeleteDirectory (out_dir);
+		if (System.IO.Directory.Exists (last_dir))
+			DeleteDirectory (last_dir);
+        System.IO.Directory.CreateDirectory (parent_dir);
+        System.IO.Directory.CreateDirectory (child_dir);
+        System.IO.Directory.CreateDirectory (out_dir);
+		System.IO.Directory.CreateDirectory (last_dir);
+		for (int index = 0; index < files_to_unpack.Length; ++index) {
+			progressbar.Text = "Status: " + (object)index + "/" + files_to_unpack.Length + " extraction";
+			progressbar.Fraction = (double)(index + 1) / files_to_unpack.Length * 0.2;
+			Main.IterationDo (false);
+			ExtractTARC (files_to_unpack [index], parent_dir);
+		}
+		File.Move(parent_dir + "15", out_dir + "15"); //needs special treatment
+		File.Move(parent_dir + "2916", out_dir + "2916"); //ttx image
+
+		string[] parent_files = System.IO.Directory.GetFiles (parent_dir);
+		for (int index = 0; index < parent_files.Length; ++index) {
+			progressbar.Text = "Status: " + (object)index + "/" + parent_files.Length + " child unpacking";
+			progressbar.Fraction = 0.2 + ((double)(index + 1) / parent_files.Length * 0.5);
+			Main.IterationDo (false);
+			UnpackTARC (parent_files [index], child_dir, out_dir);
+		}
+
+		string[] child_tarc_dirs = System.IO.Directory.GetDirectories (child_dir);
+		for (int index = 0; index < child_tarc_dirs.Length; ++index) {
+			progressbar.Text = "Status: " + (object)index + "/" + child_tarc_dirs.Length + " grandchild unpacking";
+			progressbar.Fraction = (double)0.7 + ((double)(index + 1) / child_tarc_dirs.Length * 0.2);
+			Main.IterationDo (false);
+			string sliced_tarc_dir = new FileInfo (child_tarc_dirs [index]).Name;
+			string grandchild_dir = out_dir + sliced_tarc_dir + System.IO.Path.DirectorySeparatorChar;
+			string lastgen_dir = last_dir + sliced_tarc_dir + System.IO.Path.DirectorySeparatorChar;
+			string[] child_tarcs = System.IO.Directory.GetFiles (child_tarc_dirs [index]);
+			for (int i = 0; i < child_tarcs.Length; ++i) {
+				UnpackTARC (child_tarcs [i], lastgen_dir, grandchild_dir);
+			}
+		}
 
 		//make script files
 		System.IO.Directory.CreateDirectory (script_dir);
