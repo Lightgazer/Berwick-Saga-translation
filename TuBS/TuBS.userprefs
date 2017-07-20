@@ -11,15 +11,15 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.Workbench ActiveDocument="TuBS/ExportScript.cs">
     <Files>
-      <File FileName="TuBS/MainWindow.cs" Line="1" Column="1" />
+      <File FileName="TuBS/MainWindow.cs" Line="195" Column="18" />
       <File FileName="TuBS/EmptyClass.cs" Line="1" Column="1" />
-      <File FileName="TuBS/CodePage.cs" Line="336" Column="38" />
-      <File FileName="TuBS/ImportScript.cs" Line="107" Column="6" />
-      <File FileName="TuBS/ExportScript.cs" Line="79" Column="37" />
+      <File FileName="TuBS/CodePage.cs" Line="1" Column="1" />
+      <File FileName="TuBS/ImportScript.cs" Line="1" Column="1" />
+      <File FileName="TuBS/ExportScript.cs" Line="23" Column="25" />
       <File FileName="TuBS/ImageConv.cs" Line="1" Column="1" />
       <File FileName="TuBS/Comp.cs" Line="1" Column="1" />
       <File FileName="TuBS/Palette.cs" Line="1" Column="1" />
-      <File FileName="TuBS/Program.cs" Line="17" Column="19" />
+      <File FileName="TuBS/Program.cs" Line="20" Column="21" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.TuBS PreferredExecutionTarget="MonoDevelop.Default" />

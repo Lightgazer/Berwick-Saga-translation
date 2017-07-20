@@ -1,4 +1,5 @@
-﻿using System;
+﻿using TuBS;
+using System;
 using Gtk;
 using System.IO;
 using System.Text;
@@ -10,21 +11,13 @@ using System.Collections.Generic;
 
 public partial class MainWindow : Gtk.Window
 {
-	protected string GetActor (ushort num)
-	{
-//		string[] actors = { "Priest", "Reese", "Ward", "Villager" };
-//		if (num < actors.Length)
-//			return actors [num];
-		return num.ToString ();
-	}
-
 	protected List<string> DumpText (FileInfo file, char[] code_page)
 	{
 		List<string> script = new List<string> ();  
 		BinaryReader reader = new BinaryReader ((Stream)new FileStream (file.FullName, FileMode.Open));
+		Scene scene = new Scene ();
 		string str = "";
 		string strsq = "";
-		string comment = "#";
 
 		while (reader.BaseStream.Position < reader.BaseStream.Length) {
 			ushort num1 = reader.ReadUInt16 ();
@@ -44,12 +37,11 @@ public partial class MainWindow : Gtk.Window
 			else if ((int)num1 == 44544)
 				str += "▲";
 			else if ((int)num1 == 33024) { // window end
-				if(comment.Length > 1)
-					script.Add (comment);
+				if(scene.Active == true)
+					script.Add ("#" + scene.Window + ": " + scene.GetActor());
 				script.Add (str);
 				script.Add ("-----------------------");
 				str = "";
-				comment = "#";
 	        //info bytes
 			} else if ((int)num1 == 35074) {
 				str += "■";
@@ -59,22 +51,22 @@ public partial class MainWindow : Gtk.Window
 					strsq += reader.ReadByte () + ".";
 				strsq += "]";
 			} else if ((int)num1 == 39168) { //upper window
+				scene.Window = "Upper Window";
 				str += "■";
 				reader.BaseStream.Position -= 2;
 				strsq += "[" + reader.ReadByte () + "." + reader.ReadByte () + ".]";
-				comment += " Position: Up;";
 			} else if ((int)num1 == 39424) { //lower window	
+				scene.Window = "Lower Window";
 				str += "■";
 				reader.BaseStream.Position -= 2;
 				strsq += "[" + reader.ReadByte () + "." + reader.ReadByte () + ".]";
-				comment += " Position: Down;";
 			} else if ((int)num1 ==2024 || (int)num1 == 33280 || (int)num1 == 39936 || (int)num1 == 47104) { //some strange chars
 				str += "■";
 				reader.BaseStream.Position -= 2;
 				strsq += "[" + reader.ReadByte () + "." + reader.ReadByte () + ".]";
 			} else if ((int)num1 == 41985) { //actor tag
-				ushort actorn = reader.ReadUInt16 ();
-				comment += " Actor: " + GetActor(actorn) + ";";
+				ushort actor_id = reader.ReadUInt16 ();
+				scene.SetActor (actor_id);
 				str += "■";
 				reader.BaseStream.Position -= 4;
 				strsq += "[";
@@ -140,6 +132,52 @@ public partial class MainWindow : Gtk.Window
 		}
 		writer.Flush ();
 		writer.Close ();
+	}
+}
+
+class Scene 
+{
+	ushort upper_actor;
+	ushort lower_actor;
+	ushort last_actor;
+	public string Window;
+	public bool Active = false;
+
+	public void SetActor (ushort id)
+	{
+		Active = true;
+		if (Window == "Upper Window")
+			upper_actor = id;
+		if (Window == "Lower Window")
+			lower_actor = id;
+		last_actor = id;
+	}
+
+	public string GetActor ()
+	{
+		if (Window == "Upper Window") 
+			return Cast.GetActorById (upper_actor);
+		else if (Window == "Lower Window") 
+			return Cast.GetActorById (lower_actor);
+
+		return Cast.GetActorById (last_actor);
+	}
+}
+
+static class Cast
+{
+	static string[] actors;
+	static Cast ()
+	{
+		if (File.Exists ("faces.txt"))
+			actors = File.ReadAllLines ("faces.txt");
+		else
+			actors = new string[1568];
+	}
+
+	public static string GetActorById (ushort id)
+	{
+		return actors [id];
 	}
 }
 
