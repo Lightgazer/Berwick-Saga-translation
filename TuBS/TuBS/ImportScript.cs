@@ -140,7 +140,7 @@ public partial class MainWindow : Gtk.Window
 							} else
 								cir_match = cir_match.NextMatch ();
 							writer.Write (ushort.Parse (cir_match.Groups [1].Value));
-							i += cir_match.Length - 1;
+							i = cir_match.Index + cir_match.Length - 1;
 						} else {
 							i--;
 							writer.Write (FindChar ('●', code_page, original_code_page));

@@ -20,8 +20,6 @@ public partial class MainWindow : Gtk.Window
 			progressbar.Text = "Status: " + pathdat4 + " not found";
 		if (!File.Exists (pathdat3))
 			progressbar.Text = "Status: " + pathdat3 + " not found";
-//		if (File.Exists ("list.txt"))
-//			ReadImportList ();
 		foreach (string list in Directory.EnumerateFiles(Directory.GetCurrentDirectory (), "list*.txt", SearchOption.TopDirectoryOnly))
 			ReadImportList (list);
 	}

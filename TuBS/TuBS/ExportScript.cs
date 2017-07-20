@@ -139,7 +139,6 @@ class Scene
 {
 	ushort upper_actor;
 	ushort lower_actor;
-	ushort last_actor;
 	public string Window;
 	public bool Active = false;
 
@@ -148,19 +147,16 @@ class Scene
 		Active = true;
 		if (Window == "Upper Window")
 			upper_actor = id;
-		if (Window == "Lower Window")
+		else //"Lower Window"
 			lower_actor = id;
-		last_actor = id;
 	}
 
 	public string GetActor ()
 	{
 		if (Window == "Upper Window") 
 			return Cast.GetActorById (upper_actor);
-		else if (Window == "Lower Window") 
+		else //if (Window == "Lower Window") 
 			return Cast.GetActorById (lower_actor);
-
-		return Cast.GetActorById (last_actor);
 	}
 }
 
