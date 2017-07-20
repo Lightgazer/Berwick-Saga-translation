@@ -1,0 +1,1567 @@
+Character
+Gladiator
+Auto１
+Auto２
+Auto３
+Auto４
+Auto５
+Auto６
+Auto７
+Auto８
+Auto９
+Auto１０
+Auto１１
+Auto１２
+Auto１３
+Auto１４
+Auto１５
+Auto１６
+Auto１７
+Auto１８
+Auto１９
+Auto２０
+Auto２１
+Auto２２
+Auto２３
+Auto２４
+Auto２５
+Auto２６
+Auto２７
+Auto２８
+Auto２９
+Auto３０
+Auto３１
+Auto３２
+Auto３３
+Auto３４
+Auto３５
+Auto３６
+Auto３７
+Auto３８
+Auto３９
+Auto４０
+Gate
+Gate
+Gate
+Gate
+Gate
+Gate
+Gate
+Gate
+Gate
+Gate
+Castle Walls
+Castle Walls
+Castle Walls
+Castle Walls
+Castle Walls
+Castle Walls
+Castle Walls
+Castle Walls
+Castle Walls
+Castle Walls
+Door
+Door
+Door
+Door
+Door
+Door
+Door
+Door
+Door
+Door
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+Reese
+Ward
+Elbert
+Marcel
+Adel
+Leon
+Sherlock
+Esteban
+EX
+EX
+EX
+EX
+EX
+Arthur
+Daoud
+Burroughs
+Paramythis
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+Dean
+Sherpa
+Faramir
+EX
+Perceval
+EX
+EX
+Derrick
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+Christine
+Lynette
+Sylvis
+Aegina
+Alvina
+Faye
+Czene
+Izerna
+Enid
+Larentia
+Ruby
+Sapphire
+May
+Sienna
+EX
+EX
+EX
+EX
+EX
+EX
+Volo
+EX
+EX
+Axel
+EX
+Kramer
+Owen
+EX
+Clifford
+Thaddy
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+Ｐ０１
+Ｐ０２
+Ｐ０３
+Ｐ０４
+Ｐ０５
+Ｐ０６
+Ｐ０７
+Ｐ０８
+Ｐ０９
+Ｐ１０
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+Tianna
+Item Convoy
+Toss
+Bag Storage
+Bag Storage
+Bag Storage
+Bag Storage
+Bag Storage
+Bag Storage
+Bag Storage
+Bag Storage
+Bag Storage
+Bag Storage
+Bag Storage
+Bag Storage
+Bag Storage
+Bag Storage
+Bag Storage
+Bag Storage
+Horse
+Horse
+Horse
+Horse
+Horse
+Horse
+Ziol
+Lowe
+Jimusa
+Qliphoth
+Vear
+Luciana
+Maria
+EX
+EX
+EX
+Meia
+Lumiere
+Marybelle
+Arina
+Alex
+Lauz
+Quescria
+Orlando
+Danton
+Meister
+EX
+EX
+Hafmann
+Clara
+Carlotta
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+Quest Debug
+Ritchens
+Salonia-hei
+Deserter
+Benner
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+Gariad
+Neam Bandit
+Neam Bandit
+Mendels
+Forest-Folk
+Razenstein
+Badonia-hei
+Neam Bandit
+Neam Bandit
+Neam Bandit
+Neam Bandit
+Neam Bandit
+EX
+Pisaro
+Pedro
+Imp. 4th Army
+Goran Bandit
+Allied Army
+Allied Army
+Ali Baba
+Razite
+Sand
+Gard
+Dominic
+Troia
+Laurus
+Razencrow
+Bornian
+Cardy
+Lebrus
+Gilgamesh
+Nielsen
+Martin
+EX
+EX
+Empty House
+EX
+EX
+EX
+Gordoba
+Gor
+Kamul
+Saibat
+Cavotte
+Gibson
+Lyan
+Vons
+Garvot
+Eusman
+Ex-Goran
+Vandol
+Notz
+Parra
+Cymu
+Jaeger
+Thomson
+Dacchar
+Dorren
+Garia Pirate
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+Slovell
+Zonojil
+Kithri
+Sloams
+Goering
+Solodas
+Garek
+Euber
+Basla
+Jiralgo
+Orle
+Riad
+Cephugoleth
+Dudig
+Hoelums
+Guddi
+Liaz
+Dorada
+Zelruppa
+Turodi
+Jultova
+Zezar
+Vadrey
+Bune
+Zesamalt
+Parvati
+Euredzin
+von Luci
+DeMarc
+Susamal
+Giradas
+Ledinsky
+Zoredan
+Cuthrel
+Dieux
+Damarro
+Reifdan
+Culvacon
+Bravul
+Roames
+Dephlinga
+Deslor
+Corde
+Helph
+Schmeitzer
+Zanonus
+von Lin
+Lebesgue
+Helfonte
+Barmerd
+Valdez
+Gezaad
+Rota
+Lebron Citizen
+Lebron Citizen
+Gonzij
+Lebron Citizen
+Lebron Citizen
+Imperial
+Ortmann
+Minas
+Theodore
+Razite
+Fagnal
+Balmer
+Duchess
+EX
+Kay
+Imperial
+Allied Army
+Razite
+Razite
+Villager
+Merril
+von Beck
+Vasquez
+Simas
+Grauve
+Imperial Reserve
+Razencrow
+Courier
+Engineer
+Head Engineer
+Imperial Reserve
+Simon
+Gardy
+Border Guard
+Ozama
+Marble
+Border Guard
+Dabos
+Engineer
+Engineer
+Engineer
+Border Guard
+Border Guard
+Border Guard
+Bornian
+Lester
+Almachis
+Vester
+Vester's Unit
+Razite
+Barnard
+Vester's Unit
+Pratton
+Cerras
+Mayor
+Imperial
+Villager
+Scarro
+Bornian
+Pentland
+Vandal
+Rudolph
+Trador
+Erec
+Michel
+Lyarc
+Bornian
+Arnold
+Aryuza Citizen
+Aryuza Citizen
+Garshe
+Aryuza Citizen
+Vanmilion
+Narvian
+Goebbels
+Munver
+EX
+EX
+EX
+Guard
+Transporter
+Sentinel
+Faria
+Lyore
+Imperial
+Razite
+Camlann
+Transporter
+Coen
+Aisha
+Ex-Ishs
+Gavin
+Welran
+Volunteer
+Supporter
+EX
+EX
+EX
+Erickson
+York
+Ex-Quan
+Convoy
+Besieger
+Sentinel
+Ballistician
+Marksman
+Allied Soldier
+Calfors
+Verian Knight
+Ex-Sapphire
+Ex-Paramythis
+Chaos
+EX
+Razencrow
+EX
+EX
+EX
+Imperial
+Andersen
+Jimuca
+Wallenstine
+Mercenary
+Aleck
+Mort
+Zephyrus
+Arcturus
+Zephyrus's Unit
+Trimier
+Piers
+Fort Guard
+Road Guard
+Abram
+Bornian
+Reserve Corps
+Narvian
+Gordova
+Vanmilion
+Vester
+Leticia
+EX
+EX
+EX
+EX
+Conan
+Imperial
+Amoy
+Guard
+Nazgul
+Pesil Army
+Richthofen
+Razite
+EX
+EX
+EX
+1st Ballistician
+2nd Ballistician
+3rd Ballistician
+Imperial
+Dark Priest
+Toll
+Veirton
+Garshe
+Ishmat
+Danfar
+Murin
+Yaron
+EX
+EX
+Gandeldyne
+Razencrow
+Imperial
+Veda Bandit
+Pesil Knight
+EX
+EX
+EX
+Zephyrus's Unit
+Zephyrus's Unit
+Zephyrus's Unit
+Zephyrus's Unit
+Zephyrus's Unit
+Zephyrus's Unit
+Sophia
+Julian
+Imp. Archer
+Allied Scientist
+Allied Commander
+Luveil
+Imp. Archer
+Courier
+Black Knight
+Allied Soldier
+EX
+EX
+EX
+EX
+EX
+EX
+Rasputin
+Alfons
+Semdallion
+Yumil
+EX
+Luciana
+Maria
+Quescria
+EX
+Razite
+Imperial
+Danae Bandit
+Razencrow
+Sophia's Escort
+EX
+Etoir's Escort
+Janet's Escort
+Resfina's Escort
+Izerna's Escort
+Escort
+Conrad
+Razenstein
+Elrenne
+Roxanne
+Razencrow
+Lebeck Soldier
+Lebeck Soldier
+Lebeck Bandit
+EX
+EX
+EX
+EX
+EX
+EX
+Bernald
+Cyas
+Etoir
+Izmork
+Ordo
+Keimos
+Mahatma
+Titheau
+Wagner
+Warren
+Chivat
+Kennel
+Ex-Sara
+Zect
+Shivas
+Rondy
+Julius
+Edwin
+Gilias
+Ex-Aries
+Windsor
+Sharon
+Lionheart
+Morra
+Wallenstein
+Cromwell
+Vigbea
+ha-Yadh
+Ginger
+Lindobell
+Ex-Shyan
+Moirai
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+Reese
+Wort
+Faris
+Elbert
+Daoud
+Farius
+Marroy
+Shayde
+Rufus
+Buroze
+Bernald
+Luke
+Galuf
+Bronzin
+Saj
+Swift
+Michael
+Beck
+Lindon
+Beiss
+Viez
+Tito
+Laon
+Selphon
+Vector
+Jigsaw
+Mugar
+Heinkel
+Samwell
+Volson
+Fuva
+Lozin
+Elton
+Camlann
+Tomas
+Lydon
+Lilia
+Bengriton
+Valentin
+Zacharro
+Ortega
+Pisarro
+Keltzar
+Zalius
+Fuva
+Tarevan
+Neam Bandit
+Maham
+Maham
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+Gomez
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+Volcens
+Herman
+Jacharam
+EX
+Razenhorn
+Razenfang
+Imperial
+Mercenary
+Padolf
+Executioner
+Reserve Corps
+Roswick
+Reed
+Sienna
+Theodore
+Minas
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+Demias Bandit
+Agvan
+Meriah
+Siq
+Garos
+Orbel
+Sakhalin
+Grimm
+Selim
+Rodin
+Razite
+Demias Bandit
+Demias Bandit
+Fermat
+Igos
+Doros
+Sophie
+Josef
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+EX
+Corad
+Salle
+Suiven
+Tengel
+Iress
+Donhau
+Rizaad
+Weissman
+James
+Beldou
+Caiman
+Starvell
+Kurt
+Josel
+Heinz
+Paulus
+Manstein
+Hentschel
+Porsche
+Bottoms
+Kracher
+Nerman
+Slo
+Aban Sud
+Ilea
+Eisenhower
+Elvis
+Ex-Conan
+Hasma
+Itol
+Bauer
+Storoz
+Carma
+Eritz
+Prush
+Bobo
+Creann
+Antony
+Elvo
+Masch
+Maracus
+Palrovin
+Baldur
+Gort Bandit
+Shagaal
+Ent Bandit
+Murtagh
+Adria Bandit
+Dorunne Bandit
+Yam Bandit
+Imperial Garrison
+Griff
+Graff
+Muthae Bandit
+Paletta
+Shamrock
+Hyde
+Gaza Bandit
+Arzovy
+Razencrow
+Razite
+William
+Imperial 1st
+Razite
+Tina's Dad
+Tina's Mom
+EX
+Imperial Guard
+Allied Officer
+Allied 1st
+Allied 2nd
+Allied 3rd
+Allied 4th
+Allied 5th
+Allied 6th
+Imperial
+Anatore
+Snow Guerrilla
+Tatiana
+Ice Dragon
+Zyas
+Vall Pirate
+Hamilton
+Imperial Recruit
+Dark Object
+Dark Object
+Dark Object
+Dark Object
+Dark Object
+Blue Killer
+Red Killer
+Zambus
+Baphuzel
+Gaius
+Seamus
+Seamus's Unit
+Lennox
+3rd Supply Corps
+Rosalie
+Nima
+Guardian
+Doria Pirate
+Raquel
+Narvian
+Narvian
+Narvian
+Weiss
+Simaus's Unit
+Desert Clan
+Ridol
+Fire Dragon
+Nagra
+Pilgrim
+Gorlan
+Imperial
+Allied Ballistician
+Allied Supplier
+Deserter
+Relief Corps
+Morque Bandit
+Feruz
+Rick
+Bosch
+Gasshe
+Dosh
+Rick Bandit
+Narcissus
+Stefano
+Lazarus
+Matthai
+Balava
+Red Brother
+Imperial Scout
+Dangust
+Zalem Bandit
+Imperial Supplier
+Imperial Seaman
+Helcut
+Imperial Hunter
+Funca
+Dudley
+Gibbs
+Chebyshev
+Webber
+Heim Villager
+Heim Villager
+Wyvern
+Desert Clan
+Vadrius
+Jail Guard
+Lyle
+Hessler
+Kelberoth
+Jail Guard
+7th Wyvern Knight
+Prisoner
+Razite
+Razite
+Camp Guard
+Escort
+Allied POW
+Abus
+Warden
+Givas
+Laon
+Volpoz Group
+Corrupt Priest
+Morrow
+Allison
+Razite
+Morrow Bandit
+Wyvern
+Fire Dragon
+Thor
+Meckel
+Aminov
+Castren
+Dalm
+Escapee
+Aris Villager
+Golua Villager
+Marua Villager
+Hert Villager
+Allied Soldier
+Gort Bandit
+Gort Bandit
+Gort Bandit
+Imperial 15th
+Imperial 16th
+Gort Bandit
+Rodeon
+Scourge
+Holun
+Logis
+Friz
+Dragon Tamer
+Sandrov
+EX
+EX
+Verda
+Uriad
+Morax
+Muerthen
+Gorzevalus
+Associate
+Guard
+Varosius
+Belgica Bandit
+Fence
+Headquarters
+Bank
+Spearman
+Archer
+Axeman
+Ballistician
+Knight
+Reserve Leader
+Guard
+Guard
+Guard
+Volunteer
+Volunteer
+Volunteer
+Bolt
+Boltz
+Horus
+Krishna
+Dallas
+Overseer
+Teodor
+Hazrij
+Hazrij Merc
+Razite
+Imperial Officer
+Imperial Garrison
+Clampf
+Bianca
+Bonfire
+Razite
+Razite
+Razite
+Convoy
+Stormtrooper
+Zys
+Longbowman
+Bowman
+Artia
+Patrol Wyvern
+Degnar
+Bailiff
+Ofter
+Disaad
+Razite
+Penelo
+Slaver
+Deserter
+Relief Officer
+Relief Corps
+Escort
+Escort
+Camp Guard
+Camp Guard
+Camp Guard
+Camp Guard
+Camp Guard
+Camp Guard
+Allied POW
+Allied POW
+Allied POW
+Allied POW
+Lawson
+Nizal
+Razite
+Razite
+Leiss
+Mauro
+Cleric
+Alicia
+Savat
+Teresa
+Pej
+Zax
+Lewis
+Bluck
+Cecily
+Carmal
+Lendel
+Jonathan
+Yumil
+Blacksmith
+Set
+Hermott
+Weyl
+Euclid
+Jailor
+Jung
+Store Clerk
+Mayor
+Villager
+Defender
+Defender
+Defender
+Defender
+Zeoselm
+Zeluo
+Ferres
+Leanne
+Head Guard
+Guardsman
+Favre
+Roswick
+Vanmilion
+Barat
+Esteban
+Padolf
+Borman
+Roswick
+Volcens
+Herman
+Lebough
+Padolf
+Reed
+Bernard
+Zephyrus
+Anatol
+Cleiman
+Pfeizal
+Anastasia
+Cordova
+Bernstol
+Ciel
+Ciel
+Eleanor
+Beck
+Fowlkes
+Eric
+Valery
+Heriva
+Rebel
+Clerk
+Clerk
+Clerk
+Priest
+Villager
+Deserter
+Deserter
+Deserter
+Lazlo
+Katya
+Leonard
+Halvan
+Nives
+Elder
+Lady
+Lady
+Lady
+Girl
+Mercenary
+Mercenary
+Mercenary
+Adenau
+Ex-Cleim
+Zir
+Bornian
+Narvian Knight
+Narvian Knight
+Malcos
+Eliza
+Eliza
+Eliza
+Ellis
+Empty House
+Conrovan
+Raquel
+Gomorrah
+Erzheimer
+Barselphon
+Monis
+Katerina
+Maris
+Liz
+City Kid
+City Kid
+Carmel
+Group Member
+Group Member
+Group Member
+Group Member
+Newbie
+Townsperson
+Morrison
+Marshe
+Russel
+Martha
+Western Army
+Butler
+Arcturus
+Soldier
+Rosecchar
+Vergil
+Decker
+Matthew
+Ripple
+Gibry
+Lazlow
+Phyllis
+Lark
+Siglis
+Gina
+Ophelia
+Narvian Knight
+Corona Army
+Thompson
+Genos
+Pierre
+Lydia
+Quescria
+Barat
+Tavan
+Larsil
+Manaclir
+Lycel
+Pamela
+Lecter
+Malcus
+Lena
+Ex-Bianca
+Remi
+Coney
+Marl
+Marinia
+Marrol
+Leno
+Dwight
+Vectar
+Graham
+Maia
+Marrow
+Elmund
+Shamrock
+Cleo
+Milia
+Tina
+Tina
+Razencrow
+Razencrow
+Snow Guerrilla
+Snow Guerrilla
+Snow Guerrilla
+Snow Guerrilla
+Sinon Knight
+Peddler
+Selcus
+Mazela
+Lane
+Moria
+Citizen
+Citizen
+Citizen
+Vall Pirate
+Vall Pirate
+Vall Pirate
+Vall Pirate
+Vall Pirate
+Vall Pirate
+Norman
+Colette's Mom
+Colette
+Allied Soldier
+Marcus
+Formar
+Bas
+Celina
+Seamus's Unit
+Seamus's Unit
+Seamus's Unit
+Seamus's Unit
+Ellis
+Fray
+Rockefeller
+Marua Villager
+Marua Villager
+Marua Villager
+Golua Villager
+Golua Villager
+Aris Villager
+Hert Villager
+Palace Knight
+Royal Knight
+Grinid
+Attendant
+Elder
+Lumberjack
+Chaos
+May
+Radil
+Kappha
+Marine
+Ferpus
+Lilim
+Blest
+Anita
+Velzen
+Tinna
+Colt
+Citizen
+Citizen
+Citizen
+Citizen
+Citizen
+Explainer
+Establisher
+Initiator
+Guide
+Fina
+Gravekeeper
+Soldier
+Lidran
+Lara
+Hassan
+Imperial
+Imperial
+Imperial Knight 
+Guest
+Guest
+Guest
+Guest
+Leader
+Priest
+Cassandra
+Serenian Disciple
+Military Police
+Military Police
+Police Chief
+Priest
+Sienna
+Sienna
+Sienna
+Bernard
+Captain
+Palitzsch
+Mark
+Harold
+Sabrina
+Claudia
+Chief Guardsman
+Tensberger
+Dolce
+Vergil
+Narvian Knight
+Masked Man
+Leticia
+Manaris
+Fraus
+Agnes
+Customer
+Bornian
+Anna
+Lynette
+Priest
+Guest
+Guest
+Jean
+Drunkard
+Drunkard
+Lynette
+Almuth
+Enoch
+Spy
+Woman
+Messenger
+Azrael
+Urbanus
+Sara
+Rumi
+Rumi's Mom
+Shire
+Magnard
+Morai
+Marius
+Associate
+Sentry
+Witte
+Sherpa
+Sherpa
+Owen
+Reese
+Dummy1
+Dummy2
+Cowen
+Allied Scientist
+Ferianne
+Mordred
+Clerk
+Brighton's Unit
