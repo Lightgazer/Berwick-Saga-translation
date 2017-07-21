@@ -139,7 +139,7 @@ class Scene
 {
 	ushort upper_actor;
 	ushort lower_actor;
-	public string Window;
+	public string Window = "Lower Window";  //message appears in lower window by default
 	public bool Active = false;
 
 	public void SetActor (ushort id)
@@ -155,8 +155,7 @@ class Scene
 	{
 		if (Window == "Upper Window") 
 			return Cast.GetActorById (upper_actor);
-		else //if (Window == "Lower Window") 
-			return Cast.GetActorById (lower_actor);
+		return Cast.GetActorById (lower_actor);
 	}
 }
 
