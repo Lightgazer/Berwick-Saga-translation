@@ -160,7 +160,7 @@ public partial class MainWindow : Gtk.Window
 		};
 		string parent_dir = "pDATA3" + System.IO.Path.DirectorySeparatorChar;
 		string child_dir = "cDATA3" + System.IO.Path.DirectorySeparatorChar;
-		string out_dir = "DATA3" + System.IO.Path.DirectorySeparatorChar;
+		string data_dir = "DATA3" + System.IO.Path.DirectorySeparatorChar;
 		string last_dir = "lDATA3" + System.IO.Path.DirectorySeparatorChar;
 		string script_dir = "Script" + System.IO.Path.DirectorySeparatorChar;
 		progressbar.Text = "Status: Removing old folders";
@@ -170,13 +170,13 @@ public partial class MainWindow : Gtk.Window
 			DeleteDirectory (parent_dir);
 		if (System.IO.Directory.Exists (child_dir))
 			DeleteDirectory (child_dir);
-		if (System.IO.Directory.Exists (out_dir))
-			DeleteDirectory (out_dir);
+		if (System.IO.Directory.Exists (data_dir))
+			DeleteDirectory (data_dir);
 		if (System.IO.Directory.Exists (last_dir))
 			DeleteDirectory (last_dir);
         System.IO.Directory.CreateDirectory (parent_dir);
         System.IO.Directory.CreateDirectory (child_dir);
-        System.IO.Directory.CreateDirectory (out_dir);
+        System.IO.Directory.CreateDirectory (data_dir);
 		System.IO.Directory.CreateDirectory (last_dir);
 		for (int index = 0; index < files_to_unpack.Length; ++index) {
 			progressbar.Text = "Status: " + (object)index + "/" + files_to_unpack.Length + " extraction";
@@ -184,15 +184,15 @@ public partial class MainWindow : Gtk.Window
 			Main.IterationDo (false);
 			ExtractTARC (files_to_unpack [index], parent_dir);
 		}
-		File.Move(parent_dir + "15", out_dir + "15"); //needs special treatment
-		File.Move(parent_dir + "2916", out_dir + "2916"); //ttx image
+		File.Move(parent_dir + "15", data_dir + "15"); //needs special treatment
+		File.Move(parent_dir + "2916", data_dir + "2916"); //ttx image
 
 		string[] parent_files = System.IO.Directory.GetFiles (parent_dir);
 		for (int index = 0; index < parent_files.Length; ++index) {
 			progressbar.Text = "Status: " + (object)index + "/" + parent_files.Length + " child unpacking";
 			progressbar.Fraction = 0.2 + ((double)(index + 1) / parent_files.Length * 0.5);
 			Main.IterationDo (false);
-			UnpackTARC (parent_files [index], child_dir, out_dir);
+			UnpackTARC (parent_files [index], child_dir, data_dir);
 		}
 
 		string[] child_tarc_dirs = System.IO.Directory.GetDirectories (child_dir);
@@ -201,7 +201,7 @@ public partial class MainWindow : Gtk.Window
 			progressbar.Fraction = (double)0.7 + ((double)(index + 1) / child_tarc_dirs.Length * 0.2);
 			Main.IterationDo (false);
 			string sliced_tarc_dir = new FileInfo (child_tarc_dirs [index]).Name;
-			string grandchild_dir = out_dir + sliced_tarc_dir + System.IO.Path.DirectorySeparatorChar;
+			string grandchild_dir = data_dir + sliced_tarc_dir + System.IO.Path.DirectorySeparatorChar;
 			string lastgen_dir = last_dir + sliced_tarc_dir + System.IO.Path.DirectorySeparatorChar;
 			string[] child_tarcs = System.IO.Directory.GetFiles (child_tarc_dirs [index]);
 			for (int i = 0; i < child_tarcs.Length; ++i) {
@@ -237,14 +237,40 @@ public partial class MainWindow : Gtk.Window
 			progressbar.Text = "Status: " + (object)index + "/" + msg_parents.Length + " making script from msg";
 			progressbar.Fraction = 0.9 + ((double)(index + 1) / msg_parents.Length * 0.06);
 			Main.IterationDo (false);
-			ScriptMaker (out_dir + msg_parents [index], script_dir + msg_parents [index] + ".msg" + ".txt");
+			ScriptMaker (data_dir + msg_parents [index], script_dir + msg_parents [index] + ".msg" + ".txt");
 		}
 		for (int index = 0; index < pack_parents.Length; index++) {
 			progressbar.Text = "Status: " + (object)(index + 1) + "/" + pack_parents.Length + " making script from pack";
 			progressbar.Fraction = 0.96 + ((double)(index + 1) / pack_parents.Length * 0.04);
 			Main.IterationDo (false);
 			Directory.CreateDirectory (System.IO.Path.GetDirectoryName (script_dir + pack_parents [index]));
-			ScriptMaker (out_dir + pack_parents [index], script_dir + pack_parents [index] + ".txt");
+			ScriptMaker (data_dir + pack_parents [index], script_dir + pack_parents [index] + ".txt");
+		}
+
+		progressbar.Text = "Status: making script from .dat";
+		string[] dats = new string[] {System.IO.Path.Combine("3384","e0003855.dat"), 
+			System.IO.Path.Combine("3386","e0003806.dat"), System.IO.Path.Combine("3389","e0003758.dat"), System.IO.Path.Combine("3390","e0003735.dat"), 
+			System.IO.Path.Combine("3391","e0003704.dat"), System.IO.Path.Combine("3393","e0003673.dat"), System.IO.Path.Combine("3394","e0003642.dat"),
+			System.IO.Path.Combine("3396","e0003606.dat"), System.IO.Path.Combine("3397","e0003592.dat"), System.IO.Path.Combine("3398","e0003565.dat"), 
+			System.IO.Path.Combine("3400","e0003540.dat"), System.IO.Path.Combine("3401","e0003511.dat"), System.IO.Path.Combine("3402","e0003488.dat"), 
+			System.IO.Path.Combine("3404","e0003453.dat"), System.IO.Path.Combine("3405","e0003427.dat"), System.IO.Path.Combine("3407","e0003394.dat"), 
+			System.IO.Path.Combine("3408","e0003363.dat"), System.IO.Path.Combine("3410","e0003327.dat"), System.IO.Path.Combine("3411","e0003304.dat"),
+			System.IO.Path.Combine("3413","e0003275.dat"), System.IO.Path.Combine("3414","e0003249.dat"), System.IO.Path.Combine("3416","e0003214.dat"),
+			System.IO.Path.Combine("3417","e0003195.dat"), System.IO.Path.Combine("3420","e0003137.dat"), System.IO.Path.Combine("3422","e0003093.dat"),
+			System.IO.Path.Combine("3424","e0003055.dat"), System.IO.Path.Combine("3426","e0003003.dat"), System.IO.Path.Combine("3428","e0002968.dat"),
+			System.IO.Path.Combine("3431","e0002918.dat"), System.IO.Path.Combine("3434","e0002860.dat"), System.IO.Path.Combine("3435","e0002831.dat"),
+			System.IO.Path.Combine("3437","e0002787.dat"), System.IO.Path.Combine("3439","e0002753.dat"), System.IO.Path.Combine("3442","e0002686.dat"),
+			System.IO.Path.Combine("3445","e0002632.dat"), System.IO.Path.Combine("3446","e0002601.dat"), System.IO.Path.Combine("3449","e0002550.dat"),
+			System.IO.Path.Combine("3451","e0002518.dat"), System.IO.Path.Combine("3453","e0002467.dat"), System.IO.Path.Combine("3456","e0002407.dat"),
+			System.IO.Path.Combine("3458","e0002370.dat"), System.IO.Path.Combine("3458","e0002376.dat"), System.IO.Path.Combine("3462","e0002300.dat"),
+			System.IO.Path.Combine("3467","e0002200.dat"), System.IO.Path.Combine("3469","e0002150.dat"), System.IO.Path.Combine("3470","e0002138.dat"),
+			System.IO.Path.Combine("3470","e0002140.dat"), System.IO.Path.Combine("3471","e0002118.dat"), System.IO.Path.Combine("3475","e0002032.dat"),
+			System.IO.Path.Combine("3499","e0001554.dat"), System.IO.Path.Combine("3504","e0001444.dat"), System.IO.Path.Combine("3525","e0001033.dat"),
+			System.IO.Path.Combine("3525","e0001034.dat"), System.IO.Path.Combine("3525","e0001035.dat"), System.IO.Path.Combine("3525","e0001036.dat"),
+			System.IO.Path.Combine("3525","e0001037.dat"), System.IO.Path.Combine("3525","e0001038.dat"), System.IO.Path.Combine("3525","e0001039.dat") 
+		};
+		foreach (string dat in dats) {
+			DatScript.Export (data_dir + dat, script_dir + dat.Replace (System.IO.Path.DirectorySeparatorChar, '.') + ".txt");
 		}
 
 		progressbar.Text = "Status: Converting images";
@@ -273,9 +299,10 @@ public partial class MainWindow : Gtk.Window
 	protected void OnSaveButtonClicked (object sender, EventArgs e)
 	{
 		string child_dir = "cDATA3" + System.IO.Path.DirectorySeparatorChar;
-		string out_dir = "DATA3" + System.IO.Path.DirectorySeparatorChar;
+		string data_dir = "DATA3" + System.IO.Path.DirectorySeparatorChar;
 		string parent_dir = "pDATA3" + System.IO.Path.DirectorySeparatorChar;
 		string pic_dir = "Pictures" + System.IO.Path.DirectorySeparatorChar;
+		string script_dir = "Script" + System.IO.Path.DirectorySeparatorChar;
 
 		progressbar.Text = "Status: Work";
 		Main.IterationDo (false);
@@ -287,7 +314,7 @@ public partial class MainWindow : Gtk.Window
 			progressbar.Fraction = ((double)i / ttx_list.Count * 0.50);
 			Main.IterationDo (false);
 			Main.IterationDo (false);
-			string ttx = out_dir + file.Substring (0, file.Length - 4);
+			string ttx = data_dir + file.Substring (0, file.Length - 4);
 			ImageConv.PNGToTTX (pic_dir + file, ttx);
 			import_list.Add (ttx);
 		}
@@ -301,7 +328,7 @@ public partial class MainWindow : Gtk.Window
 			progressbar.Fraction = 0.5 + ((double)i / tb_list.Count * 0.05);
 			Main.IterationDo (false);
 			Main.IterationDo (false);
-			string screen = out_dir + file.Substring (0, file.Length - 4) + System.IO.Path.DirectorySeparatorChar;
+			string screen = data_dir + file.Substring (0, file.Length - 4) + System.IO.Path.DirectorySeparatorChar;
 			ImageConv.PNGToTb (pic_dir + file, screen + "000.tp", screen + "000.tb");
 			import_list.Add (screen + "000.tb");
 		}
@@ -317,6 +344,13 @@ public partial class MainWindow : Gtk.Window
 			SortImportFiles ();
 		}
 		script_list.Clear ();
+
+		foreach (string file in sdat_list) {
+			string original = data_dir + file.Split ('.') [0] + System.IO.Path.DirectorySeparatorChar + file.Split ('.') [1] + "." + file.Split ('.') [2];
+			DatScript.Import (script_dir + file, original);
+			child_list.Add (original);
+		}
+		sdat_list.Clear ();
 
 		//here place for lastgen implementation
 

@@ -71,6 +71,7 @@ public partial class MainWindow : Gtk.Window
 	List<string> child_list = new List<string> ();
 	List<string> parent_list = new List<string> ();
 	List<string> script_list = new List<string> ();
+	List<string> sdat_list = new List<string> ();
 	List<string> ttx_list = new List<string> (); 
 	List<string> tb_list = new List<string> (); 
 
@@ -82,6 +83,11 @@ public partial class MainWindow : Gtk.Window
 			string[] sliced_path;
 			FileInfo fileinfo = new FileInfo (file);
 			if (fileinfo.Extension == ".txt") {
+				if (fileinfo.Name.Contains (".dat") == true) {
+					sliced_path = file.Split (new string[] { "Script" + System.IO.Path.DirectorySeparatorChar }, StringSplitOptions.None); 
+					sdat_list.Add (sliced_path [sliced_path.Length - 1]);
+					continue;
+				}
 				sliced_path = file.Split (new string[] { "Script" + System.IO.Path.DirectorySeparatorChar }, StringSplitOptions.None); 
 				script_list.Add (sliced_path [sliced_path.Length - 1]);
 				continue;
@@ -117,6 +123,8 @@ public partial class MainWindow : Gtk.Window
 			textview.Buffer.Text += item + "\n";
 		foreach(string item in script_list)
 			textview.Buffer.Text += "Script: " + item + "\n";
+		foreach(string item in sdat_list)
+			textview.Buffer.Text += "Script (dat): " + item + "\n";
 		foreach(string item in ttx_list)
 			textview.Buffer.Text += "Picture (TTX): " + item + "\n";
 		foreach(string item in tb_list)
