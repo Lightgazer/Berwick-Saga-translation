@@ -163,6 +163,20 @@ public partial class MainWindow : Gtk.Window
 		string data_dir = "DATA3" + System.IO.Path.DirectorySeparatorChar;
 		string last_dir = "lDATA3" + System.IO.Path.DirectorySeparatorChar;
 		string script_dir = "Script" + System.IO.Path.DirectorySeparatorChar;
+		//backup protected files
+		string back_dir = "Backup" + System.IO.Path.DirectorySeparatorChar;
+		string protect_file = "protect.txt";
+		if (File.Exists (protect_file)) {
+			progressbar.Text = "Status: Backup protected files";
+			Main.IterationDo (false);
+			string[] backup_files = File.ReadAllLines (protect_file);
+			foreach (var file in backup_files) {
+				Directory.CreateDirectory (System.IO.Path.GetDirectoryName (back_dir + file));
+				if(File.Exists (file))
+					File.Move (file, back_dir + file);
+			}
+		}
+		//backup end
 		progressbar.Text = "Status: Removing old folders";
 		Main.IterationDo (false);
 		Main.IterationDo (false);
@@ -277,6 +291,17 @@ public partial class MainWindow : Gtk.Window
 		Main.IterationDo (false);
 		Main.IterationDo (false);
 		ConvertPics ();
+
+		//restore backup
+		if (File.Exists (protect_file)) {
+			string[] backup_files = File.ReadAllLines (protect_file);
+			foreach (var file in backup_files) {
+				if(File.Exists(file))
+					File.Delete (file);
+				File.Move (back_dir + file, file);
+			}
+			DeleteDirectory (back_dir);
+		}
 
 		progressbar.Text = "Status: Done";
 		progressbar.Fraction = 1;
