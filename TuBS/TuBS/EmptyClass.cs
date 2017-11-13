@@ -190,7 +190,7 @@ public partial class MainWindow : Gtk.Window
 		dat3Reader.Close ();
 	}
 
-	protected void Pack (string child, string father)
+	protected void Pack (string child, string father)  
 	{
 		int filelist_size = 0;
 		//first read file list in father
@@ -217,7 +217,6 @@ public partial class MainWindow : Gtk.Window
 			return;
 		//lets pack
 		string tmp = "temp";
-		string tmp2 = "temp2";
 		BinaryWriter writer = new BinaryWriter ((Stream)new FileStream (tmp, FileMode.Create));
 		BinaryReader child_reader = new BinaryReader ((Stream)new FileStream (child, FileMode.Open), Encoding.Default);
 
@@ -240,18 +239,19 @@ public partial class MainWindow : Gtk.Window
 				child_reader.Close ();
 				byte[] buffer;
 				if (protect == 1 && compress_flag == 0) { //if needs compression
-					Comp.compr (child, tmp2);
-					buffer = File.ReadAllBytes (tmp2);
-					File.Delete (tmp2);
+					buffer = Comp.compr (child);
 					if (length < (long)buffer.Length) {
 						buffer = File.ReadAllBytes (child);
 						compress_flag = 0;
-					} else
+					} else {
 						compress_flag = 1;
+						if(child.Contains("ttx") | child.Contains("tb")) //если сжимали изображение его нужно записать чтобы не сжимать повторно 
+							File.WriteAllBytes (child, buffer);									  //на сжатие изображений уходит много времени	 
+					}
 				} else
 					buffer = File.ReadAllBytes (child);
 				writer.BaseStream.Position = (long)(16 + 12 * index);
-				writer.Write ((int)writer.BaseStream.Length << 1 | compress_flag); //????
+				writer.Write ((int)writer.BaseStream.Length << 1 | compress_flag); //сдвинуть все биты размера влево, записать справа флаг
 				writer.Write (buffer.Length);
 				writer.BaseStream.Position = writer.BaseStream.Length;
 				writer.Write (buffer);

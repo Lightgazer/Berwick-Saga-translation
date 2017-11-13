@@ -186,7 +186,9 @@ namespace TuBS
 			int maxdev = 1024;
 
 			for (int i = 0; i < palette_size / 4; i++) {
-				int dev = Math.Abs (paletteA [i] - color.A) + Math.Abs (paletteR [i] - color.R) + Math.Abs (paletteG [i] - color.G) + Math.Abs (paletteG [i] - color.B);
+				if (paletteA [i] == color.A & paletteR[i] == color.R & paletteG [i] == color.G & paletteB [i] == color.B)
+					return (byte)i;
+				int dev = Math.Abs (paletteA [i] - color.A) + Math.Abs (paletteR [i] - color.R) + Math.Abs (paletteG [i] - color.G) + Math.Abs (paletteB [i] - color.B);
 				if (paletteA [i] == 0 & color.A == 0) {
 					index = (byte)i;
 					break;
@@ -195,8 +197,6 @@ namespace TuBS
 					index = (byte)i;
 					maxdev = dev;
 				}
-				if (maxdev == 0)
-					break;
 			}
 			return index;
 		}
@@ -238,7 +238,9 @@ namespace TuBS
 			int maxdev = 1024;
 
 			for (int i = 0; i < 16; i++) {
-				int dev = Math.Abs (paletteA [i] - color.A) + Math.Abs (paletteR [i] - color.R) + Math.Abs (paletteG [i] - color.G) + Math.Abs (paletteG [i] - color.B);
+				if (paletteA [i] == color.A & paletteR[i] == color.R & paletteG [i] == color.G & paletteB [i] == color.B)
+					return (byte)i;
+				int dev = Math.Abs (paletteA [i] - color.A) + Math.Abs (paletteR [i] - color.R) + Math.Abs (paletteG [i] - color.G) + Math.Abs (paletteB [i] - color.B);
 				if (paletteA [i] == 0 & color.A == 0) {
 					index = (byte)i;
 					break;
@@ -247,8 +249,6 @@ namespace TuBS
 					index = (byte)i;
 					maxdev = dev;
 				}
-				if (maxdev == 0)
-					break;
 			}
 			return index;
 		}

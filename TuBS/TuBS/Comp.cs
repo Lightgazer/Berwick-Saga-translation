@@ -91,7 +91,7 @@ namespace TuBS
 
 		}
 
-		public static void compr(string input, string output)
+		public static byte[] compr(string input)
 		{
 			byte[] f1buf = File.ReadAllBytes (input);
 			int f1len = f1buf.Length;
@@ -170,7 +170,8 @@ namespace TuBS
 			buffer [datapos++] = 0;
 			buffer [datapos++] = 0;
 			buffer [datapos++] = 0;
-			BinaryWriter writer = new BinaryWriter (new FileStream (output, FileMode.Create));
+			MemoryStream stream = new MemoryStream ();
+			BinaryWriter writer = new BinaryWriter (stream);
 			writer.Write(f1len);
 			writer.Write(datapos);
 			byte[] wbuffer = new byte[datapos];
@@ -179,6 +180,7 @@ namespace TuBS
 			writer.Write(wbuffer);
 			writer.Flush ();
 			writer.Close ();
+			return stream.ToArray ();
 		}
 	}
 }

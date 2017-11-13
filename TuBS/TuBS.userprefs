@@ -3,22 +3,23 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="1398" column="1" />
-      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="1399" column="1" />
-      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="620" column="1" />
-      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="644" column="1" />
+      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="1424" column="1" />
+      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="1425" column="1" />
+      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="646" column="1" />
+      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="670" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="TuBS/ExportScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TuBS/MainWindow.cs">
     <Files>
-      <File FileName="TuBS/MainWindow.cs" Line="1" Column="1" />
+      <File FileName="TuBS/MainWindow.cs" Line="174" Column="4" />
       <File FileName="TuBS/EmptyClass.cs" Line="1" Column="1" />
       <File FileName="TuBS/CodePage.cs" Line="1" Column="1" />
       <File FileName="TuBS/ImportScript.cs" Line="1" Column="1" />
-      <File FileName="TuBS/ExportScript.cs" Line="151" Column="21" />
+      <File FileName="TuBS/ExportScript.cs" Line="1" Column="1" />
       <File FileName="TuBS/ImageConv.cs" Line="1" Column="1" />
       <File FileName="TuBS/Comp.cs" Line="1" Column="1" />
-      <File FileName="TuBS/Palette.cs" Line="1" Column="1" />
+      <File FileName="TuBS/Palette.cs" Line="242" Column="1" />
+      <File FileName="TuBS/DatScript.cs" Line="1" Column="1" />
       <File FileName="TuBS/Program.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>

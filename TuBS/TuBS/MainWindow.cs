@@ -168,6 +168,8 @@ public partial class MainWindow : Gtk.Window
 		string protect_file = "protect.txt";
 		if (File.Exists (protect_file)) {
 			progressbar.Text = "Status: Backup protected files";
+			if (System.IO.Directory.Exists (back_dir))
+				DeleteDirectory (back_dir);
 			Main.IterationDo (false);
 			string[] backup_files = File.ReadAllLines (protect_file);
 			foreach (var file in backup_files) {
@@ -298,7 +300,8 @@ public partial class MainWindow : Gtk.Window
 			foreach (var file in backup_files) {
 				if(File.Exists(file))
 					File.Delete (file);
-				File.Move (back_dir + file, file);
+				if(File.Exists (back_dir + file))
+					File.Move (back_dir + file, file);
 			}
 			DeleteDirectory (back_dir);
 		}

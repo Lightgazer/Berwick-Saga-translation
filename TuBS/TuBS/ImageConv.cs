@@ -28,6 +28,14 @@ namespace TuBS
 
 		public static void PNGToTb (string image, string pal, string output)
 		{
+			BinaryReader reader = new BinaryReader(new FileStream (output, FileMode.Open));  //uncompress output if compressed
+			reader.BaseStream.Position = 0x04;
+			if ((long)(reader.ReadInt32 () + 8) == reader.BaseStream.Length) {
+				reader.Close ();
+				Comp.uncompr (output);
+			} else
+				reader.Close();
+
 			PaletteBGRS palette = new PaletteBGRS(pal);
 
 			Bitmap bmp = new Bitmap (image);
@@ -89,8 +97,14 @@ namespace TuBS
 
 		public static void PNGToTTX (string input, string output)
 		{
-			BinaryReader reader = new BinaryReader((Stream)new FileStream (output, FileMode.Open));
-			reader.BaseStream.Position = 0x08;
+			BinaryReader reader = new BinaryReader(new FileStream (output, FileMode.Open));
+			reader.BaseStream.Position = 0x04;
+			if ((long)(reader.ReadInt32 () + 8) == reader.BaseStream.Length) {
+				reader.Close();
+				Comp.uncompr (output);
+				reader = new BinaryReader(new FileStream (output, FileMode.Open));
+				reader.BaseStream.Position = 0x08;
+			}
 			int bpp = reader.ReadInt32 ();
 			reader.BaseStream.Position = 0x18;
 			int palette_type = reader.ReadInt32 ();
@@ -101,7 +115,7 @@ namespace TuBS
 			// 4bpp. Fonts. Without pallete rearrange. RGBA palette
 			if (bpp == 0x14) { 
 				PaletteRGBA4 palette = new PaletteRGBA4 (output);
-				BinaryWriter writer = new BinaryWriter ((Stream)new FileStream (output, FileMode.Open));
+				BinaryWriter writer = new BinaryWriter (new FileStream (output, FileMode.Open));
 				writer.BaseStream.Position = 32 + palette_size;
 				for (int i = 0; i < bmp.Height; i++)
 					for (int j = 0; j < bmp.Width; j++) {
@@ -117,7 +131,7 @@ namespace TuBS
 			// 8bpp. Needs palette rearrange. BGR 555 palette.
 			} else if (palette_type == 0x02) {
 				PaletteBGR palette = new PaletteBGR (output);
-				BinaryWriter writer = new BinaryWriter ((Stream)new FileStream (output, FileMode.Open));
+				BinaryWriter writer = new BinaryWriter (new FileStream (output, FileMode.Open));
 				writer.BaseStream.Position = 32 + palette_size;
 				//image writing
 				for (int i = 0; i < bmp.Height; i++)
