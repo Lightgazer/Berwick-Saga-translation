@@ -298,10 +298,11 @@ public partial class MainWindow : Gtk.Window
 		if (File.Exists (protect_file)) {
 			string[] backup_files = File.ReadAllLines (protect_file);
 			foreach (var file in backup_files) {
-				if(File.Exists(file))
+				if (File.Exists (back_dir + file))
+				if (File.Exists (file)) {
 					File.Delete (file);
-				if(File.Exists (back_dir + file))
 					File.Move (back_dir + file, file);
+				}
 			}
 			DeleteDirectory (back_dir);
 		}
