@@ -24,3 +24,12 @@ namespace TuBS
 		}
 	}
 }
+
+
+//ToDo list for 2.0
+// 1.лучшее форматирование текста
+// 2.new flow of work (prepare(once) -> update images (one time) -> import text (every time))
+// 3.хедеры для скриптов (и картинок?)
+// 4.кёрнинг и sjis.dat
+// 5.самопроверка
+// 6.архивы в памяти

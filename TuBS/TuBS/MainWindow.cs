@@ -20,6 +20,16 @@ public partial class MainWindow : Gtk.Window
 			progressbar.Text = "Status: " + pathdat4 + " not found";
 		if (!File.Exists (pathdat3))
 			progressbar.Text = "Status: " + pathdat3 + " not found";
+		if ('/' != System.IO.Path.DirectorySeparatorChar) {
+			string[] lines = File.ReadAllLines ("list.txt");
+			for (int i = 0; i < lines.Length; i++)
+				lines [i] = lines [i].Replace ('/', System.IO.Path.DirectorySeparatorChar);
+			File.WriteAllLines("list.txt", lines);
+			lines = File.ReadAllLines ("protect.txt");
+			for (int i = 0; i < lines.Length; i++)
+				lines [i] = lines [i].Replace ('/', System.IO.Path.DirectorySeparatorChar);
+			File.WriteAllLines ("protect.txt", lines);
+		}
 		foreach (string list in Directory.EnumerateFiles(Directory.GetCurrentDirectory (), "list*.txt", SearchOption.TopDirectoryOnly))
 			ReadImportList (list);
 	}

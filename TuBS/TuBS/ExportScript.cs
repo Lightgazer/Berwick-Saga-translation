@@ -22,7 +22,7 @@ public partial class MainWindow : Gtk.Window
 		while (reader.BaseStream.Position < reader.BaseStream.Length) {
 			ushort num1 = reader.ReadUInt16 ();
 			if ((int)num1 < 32768) {//ordinary char from "font" 
-				if(code_page.Length > num1)
+				if (code_page.Length > num1)
 					str += code_page [num1].ToString ();
 				else
 					str += "<" + num1.ToString () + ">";
@@ -37,12 +37,12 @@ public partial class MainWindow : Gtk.Window
 			else if ((int)num1 == 44544)
 				str += "▲";
 			else if ((int)num1 == 33024) { // window end
-				if(scene.Active == true)
-					script.Add ("#" + scene.Window + ": " + scene.GetActor());
+				if (scene.Active == true)
+					script.Add ("#" + scene.Window + "; Size: " + scene.GetSize () + "; " + scene.GetActor ());
 				script.Add (str);
 				script.Add ("-----------------------");
 				str = "";
-	        //info bytes
+				//info bytes
 			} else if ((int)num1 == 35074) {
 				str += "■";
 				reader.BaseStream.Position -= 2;
@@ -60,13 +60,24 @@ public partial class MainWindow : Gtk.Window
 				str += "■";
 				reader.BaseStream.Position -= 2;
 				strsq += "[" + reader.ReadByte () + "." + reader.ReadByte () + ".]";
-			} else if ((int)num1 ==2024 || (int)num1 == 33280 || (int)num1 == 39936 || (int)num1 == 47104) { //some strange chars
+			} else if ((int)num1 == 2024 || (int)num1 == 33280 || (int)num1 == 39936 || (int)num1 == 47104) { //some strange chars
 				str += "■";
 				reader.BaseStream.Position -= 2;
 				strsq += "[" + reader.ReadByte () + "." + reader.ReadByte () + ".]";
 			} else if ((int)num1 == 41985) { //actor tag
 				ushort actor_id = reader.ReadUInt16 ();
 				scene.SetActor (actor_id);
+				str += "■";
+				reader.BaseStream.Position -= 4;
+				strsq += "[";
+				for (int i = 0; i < 4; i++)
+					if (reader.BaseStream.Position < reader.BaseStream.Length) {
+						strsq += reader.ReadByte () + ".";
+					}
+				strsq += "]";
+			} else if ((int)num1 == 40961) { //window size
+				ushort size = reader.ReadUInt16 ();
+				scene.SetSize (size);
 				str += "■";
 				reader.BaseStream.Position -= 4;
 				strsq += "[";
@@ -139,8 +150,25 @@ class Scene
 {
 	ushort upper_actor;
 	ushort lower_actor;
+	ushort upper_size;
+	ushort lower_size;
 	public string Window = "Lower Window";  //message appears in lower window by default
 	public bool Active = false;
+
+	public void SetSize (ushort size)
+	{
+		if (Window == "Upper Window")
+			upper_size = size;
+		else
+			lower_size = size;
+	}
+
+	public string GetSize ()
+	{
+		if (Window == "Upper Window")
+			return upper_size.ToString ();
+		return lower_size.ToString ();
+	}
 
 	public void SetActor (ushort id)
 	{
