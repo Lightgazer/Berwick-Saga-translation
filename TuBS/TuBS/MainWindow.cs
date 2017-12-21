@@ -24,7 +24,7 @@ public partial class MainWindow : Gtk.Window
 			string[] lines = File.ReadAllLines ("list.txt");
 			for (int i = 0; i < lines.Length; i++)
 				lines [i] = lines [i].Replace ('/', System.IO.Path.DirectorySeparatorChar);
-			File.WriteAllLines("list.txt", lines);
+			File.WriteAllLines ("list.txt", lines);
 			lines = File.ReadAllLines ("protect.txt");
 			for (int i = 0; i < lines.Length; i++)
 				lines [i] = lines [i].Replace ('/', System.IO.Path.DirectorySeparatorChar);
@@ -89,68 +89,46 @@ public partial class MainWindow : Gtk.Window
 	{
 		if (pathed_parents.Length == 0)
 			return;
-		string dat4 = "DATA4.DAT";
 		string dat3 = "DATA3.DAT";
 		string new_dir = "NEW" + System.IO.Path.DirectorySeparatorChar;
-		string newdat4 = new_dir + dat4;
 		string newdat3 = new_dir + dat3;
 		System.IO.Directory.CreateDirectory (new_dir);
-		if (File.Exists (newdat4))
-			File.Delete (newdat4);
-		if (File.Exists (newdat3))
-			File.Delete (newdat3);
-		File.Copy (dat4, newdat4);
-		BinaryReader reader_dat4 = new BinaryReader ((Stream)new FileStream (dat4, FileMode.Open));
-		BinaryReader reader_dat3 = new BinaryReader ((Stream)new FileStream (dat3, FileMode.Open));
-		BinaryWriter writer_dat3 = new BinaryWriter ((Stream)new FileStream (newdat3, FileMode.Create));
-		BinaryWriter writer_dat4 = new BinaryWriter ((Stream)new FileStream (newdat4, FileMode.Open, FileAccess.ReadWrite));
-		writer_dat4.BaseStream.Position = 368L;
 
 		progressbar.Text = "Status: DATA3 rebuilding";
 		progressbar.Fraction = 0.6;
 		Main.IterationDo (false);
+		if (File.Exists (newdat3))
+			File.Delete (newdat3);
+		BinaryWriter writer = new BinaryWriter ((Stream)new FileStream (newdat3, FileMode.Create));
+		BinaryReader reader = new BinaryReader ((Stream)new FileStream (dat3, FileMode.Open));
 
 		int[] new_flag = new int[236];
 		Array.Sort (pathed_parents, (a, b) => int.Parse (Regex.Replace (a, "[^0-9]", "")) - int.Parse (Regex.Replace (b, "[^0-9]", "")));
 		for (int i = 0; i < pathed_parents.Length; i++)
-			new_flag [i] = Int32.Parse (pathed_parents [i].Split(System.IO.Path.DirectorySeparatorChar)[1]);
+			new_flag [i] = Int32.Parse (pathed_parents [i].Split (System.IO.Path.DirectorySeparatorChar) [1]);
 
 		int path_index = 0;
-		int offset_container = 0;
-		for (int index = 0; index < 3740; ++index) {
+		for (int index = 0; index < 3741; ++index) {
 			if (index == new_flag [path_index]) {
-				writer_dat4.BaseStream.Position += 4L;
-				writer_dat4.Write (offset_container / 2048);
-				byte[] buffer1 = File.ReadAllBytes (pathed_parents [path_index]);
-				writer_dat3.Write (buffer1);
-				byte[] buffer2 = new byte[(2048 - buffer1.Length % 2048) % 2048];
-				writer_dat3.Write (buffer2);
-				writer_dat4.Write (buffer1.Length);
-				offset_container = (int)writer_dat3.BaseStream.Length;
+				Data4.offset [index] = writer.BaseStream.Position;
+				byte[] buffer = File.ReadAllBytes (pathed_parents [path_index]);
+				writer.Write (buffer);
+				writer.Write (new byte[(2048 - buffer.Length % 2048) % 2048]);
+				Data4.size [index] = buffer.Length;
 				path_index++;
 			} else {
-				writer_dat4.BaseStream.Position += 4L;
-				reader_dat4.BaseStream.Position = writer_dat4.BaseStream.Position;
-				long offset = (long)(reader_dat4.ReadInt32 () * 2048);
-				int size = reader_dat4.ReadInt32 ();
-				writer_dat4.Write (offset_container / 2048);
-				writer_dat4.BaseStream.Position += 4L; 
-				reader_dat3.BaseStream.Position = offset;
-				writer_dat3.Write (reader_dat3.ReadBytes (size));
-				byte[] buffer = new byte[(2048 - size % 2048) % 2048];
-				writer_dat3.Write (buffer);
-				offset_container = (int)writer_dat3.BaseStream.Length;
+				reader.BaseStream.Position = Data4.offset [index];
+				Data4.offset [index] = writer.BaseStream.Position;
+				writer.Write (reader.ReadBytes (Data4.size [index]));
+				writer.Write (new byte[(2048 - Data4.size [index] % 2048) % 2048]);
 			}
-			progressbar.Fraction = 0.6 + ((double)offset_container / reader_dat3.BaseStream.Length) * 0.4;
+			progressbar.Fraction = 0.6 + ((double)index / 3741) * 0.4;
 			Main.IterationDo (false);
 		}
-		writer_dat3.Write (new byte[1073741824L - writer_dat3.BaseStream.Position]);
-		reader_dat3.Close ();
-		reader_dat4.Close ();
-		writer_dat3.Flush ();
-		writer_dat4.Flush ();
-		writer_dat3.Close ();
-		writer_dat4.Close ();
+		writer.Write (new byte[1073741824L - writer.BaseStream.Position]);
+		Data4.Flush ();
+		writer.Flush ();
+		writer.Close ();
 		progressbar.Fraction = 1;
 		progressbar.Text = "Status: Done";
 	}
@@ -184,7 +162,7 @@ public partial class MainWindow : Gtk.Window
 			string[] backup_files = File.ReadAllLines (protect_file);
 			foreach (var file in backup_files) {
 				Directory.CreateDirectory (System.IO.Path.GetDirectoryName (back_dir + file));
-				if(File.Exists (file))
+				if (File.Exists (file))
 					File.Move (file, back_dir + file);
 			}
 		}
@@ -192,7 +170,7 @@ public partial class MainWindow : Gtk.Window
 		progressbar.Text = "Status: Removing old folders";
 		Main.IterationDo (false);
 		Main.IterationDo (false);
-        if (System.IO.Directory.Exists (parent_dir))
+		if (System.IO.Directory.Exists (parent_dir))
 			DeleteDirectory (parent_dir);
 		if (System.IO.Directory.Exists (child_dir))
 			DeleteDirectory (child_dir);
@@ -200,9 +178,9 @@ public partial class MainWindow : Gtk.Window
 			DeleteDirectory (data_dir);
 		if (System.IO.Directory.Exists (last_dir))
 			DeleteDirectory (last_dir);
-        System.IO.Directory.CreateDirectory (parent_dir);
-        System.IO.Directory.CreateDirectory (child_dir);
-        System.IO.Directory.CreateDirectory (data_dir);
+		System.IO.Directory.CreateDirectory (parent_dir);
+		System.IO.Directory.CreateDirectory (child_dir);
+		System.IO.Directory.CreateDirectory (data_dir);
 		System.IO.Directory.CreateDirectory (last_dir);
 		for (int index = 0; index < files_to_unpack.Length; ++index) {
 			progressbar.Text = "Status: " + (object)index + "/" + files_to_unpack.Length + " extraction";
@@ -210,8 +188,8 @@ public partial class MainWindow : Gtk.Window
 			Main.IterationDo (false);
 			ExtractTARC (files_to_unpack [index], parent_dir);
 		}
-		File.Move(parent_dir + "15", data_dir + "15"); //needs special treatment
-		File.Move(parent_dir + "2916", data_dir + "2916"); //ttx image
+		File.Move (parent_dir + "15", data_dir + "15"); //needs special treatment
+		File.Move (parent_dir + "2916", data_dir + "2916"); //ttx image
 
 		string[] parent_files = System.IO.Directory.GetFiles (parent_dir);
 		for (int index = 0; index < parent_files.Length; ++index) {
@@ -248,16 +226,16 @@ public partial class MainWindow : Gtk.Window
 			"2437", "2439", "2440", "2441", "2442", "2443", "2444", "2445", "2446", "2447", "2449", "2455", "2456", "2457", "2458", "2459", "2460",
 			"2462"
 		};  //msg
-		string[] pack_parents = new string[] {System.IO.Path.Combine("0", "athmap05.ar"),
-			System.IO.Path.Combine("1", "athmap04.ar"), System.IO.Path.Combine("2", "athmap01.ar"),
-			System.IO.Path.Combine("4", "athmap06.ar"), System.IO.Path.Combine("6", "athmap03.ar"),
-			System.IO.Path.Combine("8", "evm0320.ar"),  System.IO.Path.Combine("11", "athmap02.ar"),
-			System.IO.Path.Combine("13", "areanml.ar"), System.IO.Path.Combine("13", "evitem.ar"),
-			System.IO.Path.Combine("13", "mission.ar"), System.IO.Path.Combine("13", "townarea.ar"),
-			System.IO.Path.Combine("14", "evm0050.ar"), System.IO.Path.Combine("14", "guidemsg.ar"),
-			System.IO.Path.Combine("14", "helpmsg.ar"), System.IO.Path.Combine("14", "helpmsgb.ar"),
-			System.IO.Path.Combine("14", "sysfont.ar"), System.IO.Path.Combine("14", "smenui.ar"),
-			System.IO.Path.Combine("14", "namene.ar")
+		string[] pack_parents = new string[] {System.IO.Path.Combine ("0", "athmap05.ar"),
+			System.IO.Path.Combine ("1", "athmap04.ar"), System.IO.Path.Combine ("2", "athmap01.ar"),
+			System.IO.Path.Combine ("4", "athmap06.ar"), System.IO.Path.Combine ("6", "athmap03.ar"),
+			System.IO.Path.Combine ("8", "evm0320.ar"),  System.IO.Path.Combine ("11", "athmap02.ar"),
+			System.IO.Path.Combine ("13", "areanml.ar"), System.IO.Path.Combine ("13", "evitem.ar"),
+			System.IO.Path.Combine ("13", "mission.ar"), System.IO.Path.Combine ("13", "townarea.ar"),
+			System.IO.Path.Combine ("14", "evm0050.ar"), System.IO.Path.Combine ("14", "guidemsg.ar"),
+			System.IO.Path.Combine ("14", "helpmsg.ar"), System.IO.Path.Combine ("14", "helpmsgb.ar"),
+			System.IO.Path.Combine ("14", "sysfont.ar"), System.IO.Path.Combine ("14", "smenui.ar"),
+			System.IO.Path.Combine ("14", "namene.ar")
 		}; //pack
 		for (int index = 0; index < msg_parents.Length; index++) {
 			progressbar.Text = "Status: " + (object)index + "/" + msg_parents.Length + " making script from msg";
@@ -274,26 +252,26 @@ public partial class MainWindow : Gtk.Window
 		}
 
 		progressbar.Text = "Status: making script from .dat";
-		string[] dats = new string[] {System.IO.Path.Combine("3384","e0003855.dat"), 
-			System.IO.Path.Combine("3386","e0003806.dat"), System.IO.Path.Combine("3389","e0003758.dat"), System.IO.Path.Combine("3390","e0003735.dat"), 
-			System.IO.Path.Combine("3391","e0003704.dat"), System.IO.Path.Combine("3393","e0003673.dat"), System.IO.Path.Combine("3394","e0003642.dat"),
-			System.IO.Path.Combine("3396","e0003606.dat"), System.IO.Path.Combine("3397","e0003592.dat"), System.IO.Path.Combine("3398","e0003565.dat"), 
-			System.IO.Path.Combine("3400","e0003540.dat"), System.IO.Path.Combine("3401","e0003511.dat"), System.IO.Path.Combine("3402","e0003488.dat"), 
-			System.IO.Path.Combine("3404","e0003453.dat"), System.IO.Path.Combine("3405","e0003427.dat"), System.IO.Path.Combine("3407","e0003394.dat"), 
-			System.IO.Path.Combine("3408","e0003363.dat"), System.IO.Path.Combine("3410","e0003327.dat"), System.IO.Path.Combine("3411","e0003304.dat"),
-			System.IO.Path.Combine("3413","e0003275.dat"), System.IO.Path.Combine("3414","e0003249.dat"), System.IO.Path.Combine("3416","e0003214.dat"),
-			System.IO.Path.Combine("3417","e0003195.dat"), System.IO.Path.Combine("3420","e0003137.dat"), System.IO.Path.Combine("3422","e0003093.dat"),
-			System.IO.Path.Combine("3424","e0003055.dat"), System.IO.Path.Combine("3426","e0003003.dat"), System.IO.Path.Combine("3428","e0002968.dat"),
-			System.IO.Path.Combine("3431","e0002918.dat"), System.IO.Path.Combine("3434","e0002860.dat"), System.IO.Path.Combine("3435","e0002831.dat"),
-			System.IO.Path.Combine("3437","e0002787.dat"), System.IO.Path.Combine("3439","e0002753.dat"), System.IO.Path.Combine("3442","e0002686.dat"),
-			System.IO.Path.Combine("3445","e0002632.dat"), System.IO.Path.Combine("3446","e0002601.dat"), System.IO.Path.Combine("3449","e0002550.dat"),
-			System.IO.Path.Combine("3451","e0002518.dat"), System.IO.Path.Combine("3453","e0002467.dat"), System.IO.Path.Combine("3456","e0002407.dat"),
-			System.IO.Path.Combine("3458","e0002370.dat"), System.IO.Path.Combine("3458","e0002376.dat"), System.IO.Path.Combine("3462","e0002300.dat"),
-			System.IO.Path.Combine("3467","e0002200.dat"), System.IO.Path.Combine("3469","e0002150.dat"), System.IO.Path.Combine("3470","e0002138.dat"),
-			System.IO.Path.Combine("3470","e0002140.dat"), System.IO.Path.Combine("3471","e0002118.dat"), System.IO.Path.Combine("3475","e0002032.dat"),
-			System.IO.Path.Combine("3499","e0001554.dat"), System.IO.Path.Combine("3504","e0001444.dat"), System.IO.Path.Combine("3525","e0001033.dat"),
-			System.IO.Path.Combine("3525","e0001034.dat"), System.IO.Path.Combine("3525","e0001035.dat"), System.IO.Path.Combine("3525","e0001036.dat"),
-			System.IO.Path.Combine("3525","e0001037.dat"), System.IO.Path.Combine("3525","e0001038.dat"), System.IO.Path.Combine("3525","e0001039.dat") 
+		string[] dats = new string[] {System.IO.Path.Combine ("3384", "e0003855.dat"), 
+			System.IO.Path.Combine ("3386", "e0003806.dat"), System.IO.Path.Combine ("3389", "e0003758.dat"), System.IO.Path.Combine ("3390", "e0003735.dat"), 
+			System.IO.Path.Combine ("3391", "e0003704.dat"), System.IO.Path.Combine ("3393", "e0003673.dat"), System.IO.Path.Combine ("3394", "e0003642.dat"),
+			System.IO.Path.Combine ("3396", "e0003606.dat"), System.IO.Path.Combine ("3397", "e0003592.dat"), System.IO.Path.Combine ("3398", "e0003565.dat"), 
+			System.IO.Path.Combine ("3400", "e0003540.dat"), System.IO.Path.Combine ("3401", "e0003511.dat"), System.IO.Path.Combine ("3402", "e0003488.dat"), 
+			System.IO.Path.Combine ("3404", "e0003453.dat"), System.IO.Path.Combine ("3405", "e0003427.dat"), System.IO.Path.Combine ("3407", "e0003394.dat"), 
+			System.IO.Path.Combine ("3408", "e0003363.dat"), System.IO.Path.Combine ("3410", "e0003327.dat"), System.IO.Path.Combine ("3411", "e0003304.dat"),
+			System.IO.Path.Combine ("3413", "e0003275.dat"), System.IO.Path.Combine ("3414", "e0003249.dat"), System.IO.Path.Combine ("3416", "e0003214.dat"),
+			System.IO.Path.Combine ("3417", "e0003195.dat"), System.IO.Path.Combine ("3420", "e0003137.dat"), System.IO.Path.Combine ("3422", "e0003093.dat"),
+			System.IO.Path.Combine ("3424", "e0003055.dat"), System.IO.Path.Combine ("3426", "e0003003.dat"), System.IO.Path.Combine ("3428", "e0002968.dat"),
+			System.IO.Path.Combine ("3431", "e0002918.dat"), System.IO.Path.Combine ("3434", "e0002860.dat"), System.IO.Path.Combine ("3435", "e0002831.dat"),
+			System.IO.Path.Combine ("3437", "e0002787.dat"), System.IO.Path.Combine ("3439", "e0002753.dat"), System.IO.Path.Combine ("3442", "e0002686.dat"),
+			System.IO.Path.Combine ("3445", "e0002632.dat"), System.IO.Path.Combine ("3446", "e0002601.dat"), System.IO.Path.Combine ("3449", "e0002550.dat"),
+			System.IO.Path.Combine ("3451", "e0002518.dat"), System.IO.Path.Combine ("3453", "e0002467.dat"), System.IO.Path.Combine ("3456", "e0002407.dat"),
+			System.IO.Path.Combine ("3458", "e0002370.dat"), System.IO.Path.Combine ("3458", "e0002376.dat"), System.IO.Path.Combine ("3462", "e0002300.dat"),
+			System.IO.Path.Combine ("3467", "e0002200.dat"), System.IO.Path.Combine ("3469", "e0002150.dat"), System.IO.Path.Combine ("3470", "e0002138.dat"),
+			System.IO.Path.Combine ("3470", "e0002140.dat"), System.IO.Path.Combine ("3471", "e0002118.dat"), System.IO.Path.Combine ("3475", "e0002032.dat"),
+			System.IO.Path.Combine ("3499", "e0001554.dat"), System.IO.Path.Combine ("3504", "e0001444.dat"), System.IO.Path.Combine ("3525", "e0001033.dat"),
+			System.IO.Path.Combine ("3525", "e0001034.dat"), System.IO.Path.Combine ("3525", "e0001035.dat"), System.IO.Path.Combine ("3525", "e0001036.dat"),
+			System.IO.Path.Combine ("3525", "e0001037.dat"), System.IO.Path.Combine ("3525", "e0001038.dat"), System.IO.Path.Combine ("3525", "e0001039.dat") 
 		};
 		foreach (string dat in dats) {
 			DatScript.Export (data_dir + dat, script_dir + dat.Replace (System.IO.Path.DirectorySeparatorChar, '.') + ".txt");
@@ -429,7 +407,7 @@ public partial class MainWindow : Gtk.Window
 			progressbar.Text = "Status: " + pathdat4 + " not found";
 		else if (!File.Exists (pathdat3))
 			progressbar.Text = "Status: " + pathdat3 + " not found";
-		else 
+		else
 			progressbar.Text = "Status: Ready";
 		import_list.Clear ();
 		lastgen_list.Clear ();

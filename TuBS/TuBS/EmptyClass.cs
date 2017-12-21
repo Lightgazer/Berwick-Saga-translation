@@ -255,12 +255,14 @@ public partial class MainWindow : Gtk.Window
 				writer.Write (buffer.Length);
 				writer.BaseStream.Position = writer.BaseStream.Length;
 				writer.Write (buffer);
+				writer.Write (new byte[4 - buffer.Length % 4]); 
 			} else {
 				writer.BaseStream.Position = (long)(16 + 12 * index);
 				writer.Write ((int)writer.BaseStream.Length << 1 | protect);
 				writer.BaseStream.Position = writer.BaseStream.Length;
 				father_reader.BaseStream.Position = offset >> 1;
 				writer.Write (father_reader.ReadBytes (size));
+				writer.Write (new byte[4 - size % 4]); 
 			}
 		}
 		//next write new file list
