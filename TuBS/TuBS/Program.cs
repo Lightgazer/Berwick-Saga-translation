@@ -11,10 +11,7 @@ namespace TuBS
 		{
 			GLib.ExceptionManager.UnhandledException += delegate(GLib.UnhandledExceptionArgs  argse)
 			{
-				var log = new StreamWriter(new FileStream("error.txt", FileMode.OpenOrCreate));
-				log.WriteLine(argse.ExceptionObject.ToString());
-				log.Flush();
-				log.Close();
+				File.AppendAllText("error.txt", argse.ExceptionObject.ToString());
 				argse.ExitApplication = true;
 			};
 			Application.Init ();

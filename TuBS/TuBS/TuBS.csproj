@@ -8,7 +8,7 @@
     <RootNamespace>TuBS</RootNamespace>
     <AssemblyName>TuBS</AssemblyName>
     <Description>Berwick Saga translation tool.</Description>
-    <ReleaseVersion>1.9</ReleaseVersion>
+    <ReleaseVersion>1.10</ReleaseVersion>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">

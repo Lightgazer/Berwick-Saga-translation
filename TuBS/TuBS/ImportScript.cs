@@ -48,11 +48,51 @@ public partial class MainWindow : Gtk.Window
 		return ret;
 	}
 
+	protected static bool CheckSq (string script_file)
+	{
+		bool ret = true;
+		string parent;
+		if (script_file.Split (System.IO.Path.DirectorySeparatorChar).Length > 1) {
+			string[] slice = script_file.Split (System.IO.Path.DirectorySeparatorChar);
+			parent = System.IO.Path.Combine("DATA3", slice [0], slice [1].Substring (0, slice [1].Length - 4));
+		} else {
+			parent = System.IO.Path.Combine ("DATA3", script_file.Split ('.') [0]);
+		}
+
+		string scr = File.ReadAllText(System.IO.Path.Combine ("Script", script_file));
+		if (!File.Exists (System.IO.Path.Combine (parent, "Squares.txt")))
+			return ret;
+		string[] sq = File.ReadAllLines(System.IO.Path.Combine (parent, "Squares.txt"));
+		string[] scripts = scr.Split (new string[] { "### File " }, StringSplitOptions.RemoveEmptyEntries);
+		foreach (var file in scripts) {
+			if (file == "#")
+				continue;
+			var name = file.Split (' ') [1];
+			for (int i = 0; i < sq.Length; i++)
+				if (sq [i].Contains ("<" + name + ">")) {
+					i++;
+					string ffile = Regex.Replace (file, "#.*?\r", string.Empty);
+					int fcount = ffile.Split ('■').Length;
+					int qcount = sq [i].Split ('[').Length;
+					if (fcount > qcount) {
+						ret = false;
+						File.AppendAllText ("error.txt", "\r\nError: " + (fcount-qcount).ToString() + " extra ■ in " + script_file + " File: " + name + "\r\n");
+					} else if (fcount < qcount) {
+						ret = false;
+						File.AppendAllText ("error.txt", "\r\nError: " + (qcount-fcount).ToString() + " missing ■ in " + script_file + " File: " + name + "\r\n");
+					}
+				}
+		}
+		return ret;
+	}
+
 	Match cir_match;
 	Match rgb_match;
-	protected List<string> ScriptReader (string script_file)
+	protected List<string> ScriptReader (string script_file) //возвращает список родителей
 	{
 		List<string> out_list = new List<string> ();  
+		if (!CheckSq (script_file))
+			return out_list;
 
 		//lets find the parent and encoding
 		string parent;
