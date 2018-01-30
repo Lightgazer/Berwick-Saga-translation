@@ -20,6 +20,8 @@ public partial class MainWindow : Gtk.Window
 			progressbar.Text = "Status: " + pathdat4 + " not found";
 		if (!File.Exists (pathdat3))
 			progressbar.Text = "Status: " + pathdat3 + " not found";
+		
+		// path separator linux or windows
 		if ('/' != System.IO.Path.DirectorySeparatorChar) {
 			foreach (string file in Directory.EnumerateFiles(Directory.GetCurrentDirectory (), "list*.txt", SearchOption.TopDirectoryOnly)) {
 				string list = File.ReadAllText (file);
@@ -36,6 +38,7 @@ public partial class MainWindow : Gtk.Window
 				File.WriteAllText (file, list); 
 			}
 		}
+
 		foreach (string list in Directory.EnumerateFiles(Directory.GetCurrentDirectory (), "list*.txt", SearchOption.TopDirectoryOnly))
 			ReadImportList (list);
 	}

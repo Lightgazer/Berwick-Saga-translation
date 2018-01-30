@@ -24,6 +24,7 @@ public partial class MainWindow : Gtk.Window
 		}
 
 		string[] pics = new string[] {System.IO.Path.Combine ("DATA3", "13", "icon07.ar", "tex.ttx"), 
+			System.IO.Path.Combine ("DATA3", "13", "misswp.ar", "kabe122.ttx"),
 			System.IO.Path.Combine ("DATA3", "13", "misswp.ar", "kabe123.ttx"),
 			System.IO.Path.Combine ("DATA3", "13", "misswp.ar", "kabe124.ttx"),
 			System.IO.Path.Combine ("DATA3", "13", "misswp2.ar", "kabe130.ttx"),
@@ -36,6 +37,7 @@ public partial class MainWindow : Gtk.Window
 			System.IO.Path.Combine ("DATA3", "2931", "kabe126.ttx"),
 			System.IO.Path.Combine ("DATA3", "2932", "kabe131.ttx"),
 			System.IO.Path.Combine ("DATA3", "2939", "kabe130.ttx"),
+			System.IO.Path.Combine ("DATA3", "2940", "kabe122.ttx"),
 			System.IO.Path.Combine ("DATA3", "2940", "kabe123.ttx"),
 			System.IO.Path.Combine ("DATA3", "2940", "kabe124.ttx"),
 			System.IO.Path.Combine ("DATA3", "2962", "icon02.ar", "tex.ttx"),
@@ -77,9 +79,11 @@ public partial class MainWindow : Gtk.Window
 
 	protected void SortImportFiles ()
 	{
-		string[] files_to_import = import_list.ToArray ();
+		string[] files_to_import = import_list.Distinct ().ToArray ();
 
 		foreach (string file in files_to_import) {
+			if (file.ToCharArray () [0] == '#')
+				continue;
 			string[] sliced_path;
 			FileInfo fileinfo = new FileInfo (file);
 			if (fileinfo.Extension == ".txt") {
@@ -139,15 +143,11 @@ public partial class MainWindow : Gtk.Window
 
 	protected void  ReadImportList (string list)
 	{
-		StreamReader reader = new StreamReader (new FileStream (list, FileMode.Open));
-		string item = reader.ReadLine ();
-		while (item != null) {
-			import_list.Add (item);
-			item = reader.ReadLine ();
-		}
+		string[] items = File.ReadAllLines (list);
+		import_list.AddRange (items);
+
 		SortImportFiles ();
 		PrintImportFiles ();
-		reader.Close ();
 	}
 
 	public static void DeleteDirectory (string target_dir)
@@ -220,14 +220,21 @@ public partial class MainWindow : Gtk.Window
 		BinaryWriter writer = new BinaryWriter ((Stream)new FileStream (tmp, FileMode.Create));
 		BinaryReader child_reader = new BinaryReader ((Stream)new FileStream (child, FileMode.Open), Encoding.Default);
 
+		father_reader.BaseStream.Position = 16;
+		int header_size = father_reader.ReadInt32 () >> 1;
 		father_reader.BaseStream.Position = 0L;
-		writer.Write (father_reader.ReadBytes (16 + 12 * num_of_files));
+		writer.Write (father_reader.ReadBytes (header_size));
 
+		int[] offset = new int[num_of_files];
+		int[] size = new int[num_of_files];
+		int[] protect = new int[num_of_files];
 		for (int index = 0; index < num_of_files; ++index) {
 			father_reader.BaseStream.Position = 16 + 12 * index;
-			int offset = father_reader.ReadInt32 ();
-			int size = father_reader.ReadInt32 ();
-			int protect = (int)offset % 2;
+			offset[index] = father_reader.ReadInt32 ();
+			size[index] = father_reader.ReadInt32 ();
+			protect[index] = (int)offset[index] % 2;
+		}
+		for (int index = 0; index < num_of_files; ++index) {
 			if (child_num == index) {
 				int compress_flag = 0;
 				if (child_reader.BaseStream.Length > 8L) {
@@ -238,7 +245,7 @@ public partial class MainWindow : Gtk.Window
 				long length = child_reader.BaseStream.Length;
 				child_reader.Close ();
 				byte[] buffer;
-				if (protect == 1 && compress_flag == 0) { //if needs compression
+				if (protect[index] == 1 && compress_flag == 0) { //if needs compression
 					buffer = Comp.compr (child);
 					if (length < (long)buffer.Length) {
 						buffer = File.ReadAllBytes (child);
@@ -255,14 +262,32 @@ public partial class MainWindow : Gtk.Window
 				writer.Write (buffer.Length);
 				writer.BaseStream.Position = writer.BaseStream.Length;
 				writer.Write (buffer);
-				writer.Write (new byte[4 - buffer.Length % 4]); 
+				writer.Write (new byte[4 - buffer.Length % 4]);
+				if(index < num_of_files - 1) {
+					int diff = (offset [index + 1] >> 1) - (offset [index] >> 1) - size [index];
+					if (diff > 4) {
+						if (diff % 4 == 0)
+							writer.Write (new byte[diff - 4]);
+						else
+							writer.Write (new byte[diff - (diff % 4)]);
+					}
+				}
 			} else {
 				writer.BaseStream.Position = (long)(16 + 12 * index);
-				writer.Write ((int)writer.BaseStream.Length << 1 | protect);
+				writer.Write ((int)writer.BaseStream.Length << 1 | protect[index]);
 				writer.BaseStream.Position = writer.BaseStream.Length;
-				father_reader.BaseStream.Position = offset >> 1;
-				writer.Write (father_reader.ReadBytes (size));
-				writer.Write (new byte[4 - size % 4]); 
+				father_reader.BaseStream.Position = offset[index] >> 1;
+				writer.Write (father_reader.ReadBytes (size[index]));
+				writer.Write (new byte[4 - size[index] % 4]);
+				if(index < num_of_files - 1) {
+					int diff = (offset [index + 1] >> 1) - (offset [index] >> 1) - size [index];
+					if (diff > 4) {
+						if (diff % 4 == 0)
+							writer.Write (new byte[diff - 4]);
+						else
+							writer.Write (new byte[diff - (diff % 4)]);
+					}
+				}
 			}
 		}
 		//next write new file list

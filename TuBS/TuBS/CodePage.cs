@@ -281,7 +281,7 @@
 			if (num == 2266)
 				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000".ToCharArray ();
 			if (num == 2267)
-				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0.,!?:;-'\"~+/*%\u3000".ToCharArray ();
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000".ToCharArray ();
 			if (num == 2268)
 				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000Ⅳ".ToCharArray ();
 			if (num == 2269)
@@ -289,7 +289,7 @@
 			if (num == 2270)
 				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000ⅤⅩ".ToCharArray ();
 			if (num == 2271)
-				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*\u3000[]".ToCharArray ();
+				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000".ToCharArray ();
 			if (num == 2272)
 				return "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890.,!?:;()-'\"~+/*%[]\u3000".ToCharArray ();
 			if (num == 2273)
