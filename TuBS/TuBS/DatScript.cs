@@ -15,6 +15,11 @@ namespace TuBS
 			char[] symbs = " 、。,.・:;?!゛゜'`\"^￣_ヽヾゝゞ〃仝々〆〇ー―-/\\~∥|…‥‘’“”()".ToCharArray (); // starts at 0x8140
 			int i = 0;
 			foreach (char strch in str) {
+				if (strch == '\u3000' | strch == ' ') {
+					ret [i++] = 0x87;
+					ret [i++] = 0x60;
+					continue;
+				}
 				byte j = 0;
 				foreach (char codech in upper_case) {
 					if (strch == codech) {
