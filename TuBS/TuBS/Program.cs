@@ -9,11 +9,11 @@ namespace TuBS
 	{
 		public static void Main (string[] args)
 		{
-			GLib.ExceptionManager.UnhandledException += delegate(GLib.UnhandledExceptionArgs  argse)
-			{
-				File.AppendAllText("error.txt", argse.ExceptionObject.ToString());
-				argse.ExitApplication = true;
-			};
+//			GLib.ExceptionManager.UnhandledException += delegate(GLib.UnhandledExceptionArgs  argse)
+//			{
+//				File.AppendAllText("error.txt", argse.ExceptionObject.ToString());
+//				argse.ExitApplication = true;
+//			};
 			Application.Init ();
 			MainWindow win = new MainWindow ();
 			win.Show ();
@@ -21,12 +21,3 @@ namespace TuBS
 		}
 	}
 }
-
-
-//ToDo list for 2.0
-// 1.лучшее форматирование текста
-// 2.new flow of work (prepare(once) -> update images (one time) -> import text (every time))
-// 3.хедеры для скриптов (и картинок?)
-// 4.кёрнинг и sjis.dat
-// 5.самопроверка
-// 6.архивы в памяти

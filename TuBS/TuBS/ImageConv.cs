@@ -111,6 +111,7 @@ namespace TuBS
 			int palette_size = reader.ReadInt32 ();
 			reader.Close ();
 
+			Console.WriteLine (input);
 			Bitmap bmp = new Bitmap (input);
 			// 4bpp. Fonts. Without pallete rearrange. RGBA palette
 			if (bpp == 0x14) { 

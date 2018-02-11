@@ -169,25 +169,20 @@ public partial class MainWindow : Gtk.Window
 
 	protected void ExtractTARC (int tarc_numb, string dir)
 	{
-		string dat4 = "DATA4.DAT";
-		string dat3 = "DATA3.DAT";
-
-		BinaryReader dat4Reader = new BinaryReader ((Stream)new FileStream (dat4, FileMode.Open));
-		dat4Reader.BaseStream.Position = 368L + tarc_numb * 12;
-		dat4Reader.ReadUInt32 ();
+		BinaryReader isoReader = new BinaryReader ((Stream)new FileStream (Config.InputIsoPath, FileMode.Open));
+		isoReader.BaseStream.Position = Config.OffsetDATA4 + 368L + tarc_numb * 12;
+		isoReader.ReadUInt32 ();
 		string filename = tarc_numb.ToString ();
-		long offset = (long)(dat4Reader.ReadInt32 () * 2048);
-		int size = dat4Reader.ReadInt32 ();
-		dat4Reader.Close ();
+		long offset = (long)(isoReader.ReadInt32 () * 2048);
+		int size = isoReader.ReadInt32 ();
 
-		BinaryReader dat3Reader = new BinaryReader ((Stream)new FileStream (dat3, FileMode.Open));
 		BinaryWriter writer = new BinaryWriter ((Stream)new FileStream (dir + filename, FileMode.Create), Encoding.Default);
-		dat3Reader.BaseStream.Position = offset;
-		byte[] buffer = dat3Reader.ReadBytes (size);
+		isoReader.BaseStream.Position = Config.OffsetDATA3 + offset;
+		byte[] buffer = isoReader.ReadBytes (size);
 		writer.Write (buffer);
 		writer.Flush ();
 		writer.Close ();
-		dat3Reader.Close ();
+		isoReader.Close ();
 	}
 
 	protected void Pack (string child, string father)  
@@ -303,6 +298,15 @@ public partial class MainWindow : Gtk.Window
 		father_reader.Close ();
 		File.Delete (father);
 		File.Move (tmp, father);
+	}
+
+	void SlpsImport ()
+	{
+		using (BinaryWriter writer = new BinaryWriter ((Stream)new FileStream (Config.OutputIsoPath, FileMode.Open))) {
+			writer.BaseStream.Position = Config.OffsetSLPS;
+			writer.Write (File.ReadAllBytes (Config.SlpsPath));
+			writer.Flush ();
+		}
 	}
 }
 

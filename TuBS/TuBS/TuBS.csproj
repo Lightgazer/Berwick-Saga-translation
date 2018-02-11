@@ -8,7 +8,7 @@
     <RootNamespace>TuBS</RootNamespace>
     <AssemblyName>TuBS</AssemblyName>
     <Description>Berwick Saga translation tool.</Description>
-    <ReleaseVersion>1.12</ReleaseVersion>
+    <ReleaseVersion>1.13</ReleaseVersion>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
@@ -73,6 +73,7 @@
     <Compile Include="Comp.cs" />
     <Compile Include="DatScript.cs" />
     <Compile Include="DATA4.cs" />
+    <Compile Include="Config.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
