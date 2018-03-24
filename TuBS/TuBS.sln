@@ -16,6 +16,6 @@ Global
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		description = Berwick Saga translation tool.
-		version = 1.13
+		version = 1.14
 	EndGlobalSection
 EndGlobal

@@ -169,7 +169,7 @@ public partial class MainWindow : Gtk.Window
 
 	protected void ExtractTARC (int tarc_numb, string dir)
 	{
-		BinaryReader isoReader = new BinaryReader ((Stream)new FileStream (Config.InputIsoPath, FileMode.Open));
+		BinaryReader isoReader = new BinaryReader (File.OpenRead(Config.InputIsoPath));
 		isoReader.BaseStream.Position = Config.OffsetDATA4 + 368L + tarc_numb * 12;
 		isoReader.ReadUInt32 ();
 		string filename = tarc_numb.ToString ();
@@ -190,7 +190,7 @@ public partial class MainWindow : Gtk.Window
 		int filelist_size = 0;
 		//first read file list in father
 		string[] child_names = new string[8911];
-		BinaryReader father_reader = new BinaryReader ((Stream)new FileStream (father, FileMode.Open), Encoding.Default);
+		BinaryReader father_reader = new BinaryReader (File.OpenRead(father));
 		if (1129464148 != father_reader.ReadInt32 ()) //check TARC or not
 			return;
 		int num_of_files = father_reader.ReadInt32 ();
@@ -213,7 +213,7 @@ public partial class MainWindow : Gtk.Window
 		//lets pack
 		string tmp = "temp";
 		BinaryWriter writer = new BinaryWriter ((Stream)new FileStream (tmp, FileMode.Create));
-		BinaryReader child_reader = new BinaryReader ((Stream)new FileStream (child, FileMode.Open), Encoding.Default);
+		BinaryReader child_reader = new BinaryReader (File.OpenRead(child));
 
 		father_reader.BaseStream.Position = 16;
 		int header_size = father_reader.ReadInt32 () >> 1;

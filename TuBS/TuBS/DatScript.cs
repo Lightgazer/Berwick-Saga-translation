@@ -136,7 +136,7 @@ namespace TuBS
 		static public void Export (string input, string output)
 		{
 			List<string> out_list = new List<string> (); 
-			BinaryReader reader = new BinaryReader (new FileStream (input, FileMode.Open));
+			BinaryReader reader = new BinaryReader (File.OpenRead (input));
 			reader.BaseStream.Position = 20; //first field
 			int field_count = 0;
 			for (; reader.BaseStream.Position < reader.BaseStream.Length; field_count++) {

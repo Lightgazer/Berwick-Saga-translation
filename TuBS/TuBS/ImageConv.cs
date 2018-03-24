@@ -15,7 +15,7 @@ namespace TuBS
 			int height = 448;
 			PaletteBGRS palette = new PaletteBGRS(pal);
 
-			BinaryReader reader = new BinaryReader ((Stream)new FileStream (image, FileMode.Open));
+			BinaryReader reader = new BinaryReader (File.OpenRead(image));
 			Bitmap bmp = new Bitmap (width, height);
 			for (int i = 0; i < bmp.Height; i++)
 				for (int j = 0; j < bmp.Width; j++) {
@@ -28,7 +28,7 @@ namespace TuBS
 
 		public static void PNGToTb (string image, string pal, string output)
 		{
-			BinaryReader reader = new BinaryReader(new FileStream (output, FileMode.Open));  //uncompress output if compressed
+			BinaryReader reader = new BinaryReader(File.OpenRead(output));  //uncompress output if compressed
 			reader.BaseStream.Position = 0x04;
 			if ((long)(reader.ReadInt32 () + 8) == reader.BaseStream.Length) {
 				reader.Close ();
@@ -50,7 +50,7 @@ namespace TuBS
 
 		public static void TTXToPNG (string input, string output)
 		{
-			BinaryReader reader = new BinaryReader ((Stream)new FileStream (input, FileMode.Open, FileAccess.Read, FileShare.Read));
+			BinaryReader reader = new BinaryReader (File.OpenRead(input));
 			if (reader.ReadInt32 () != 811095124) //TTX0
 				return;
 			reader.ReadInt32 (); //zeros
@@ -97,12 +97,12 @@ namespace TuBS
 
 		public static void PNGToTTX (string input, string output)
 		{
-			BinaryReader reader = new BinaryReader(new FileStream (output, FileMode.Open));
+			BinaryReader reader = new BinaryReader(File.OpenRead(output));
 			reader.BaseStream.Position = 0x04;
 			if ((long)(reader.ReadInt32 () + 8) == reader.BaseStream.Length) {
 				reader.Close();
 				Comp.uncompr (output);
-				reader = new BinaryReader(new FileStream (output, FileMode.Open));
+				reader = new BinaryReader(File.OpenRead(output));
 				reader.BaseStream.Position = 0x08;
 			}
 			int bpp = reader.ReadInt32 ();

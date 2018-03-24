@@ -14,8 +14,6 @@ public partial class MainWindow : Gtk.Window
 	public MainWindow () : base (Gtk.WindowType.Toplevel)
 	{
 		Build ();
-		if (!File.Exists ("config.txt"))
-			progressbar.Text = "Status: Config not found";
 		if (!File.Exists (Config.InputIsoPath))
 			progressbar.Text = "Status: " + Config.InputIsoPath + " not found";
 		if (!File.Exists (Config.SlpsPath))
@@ -54,7 +52,7 @@ public partial class MainWindow : Gtk.Window
 	protected void UnpackTARC (string file, string child_dir, string out_dir)
 	{
 		BinaryWriter writer;
-		BinaryReader reader = new BinaryReader ((Stream)new FileStream (file, FileMode.Open), Encoding.Default);
+		BinaryReader reader = new BinaryReader (File.OpenRead(file));
 		if (1129464148 != reader.ReadInt32 ()) //check TARC or not
 			return;
 		int num_of_files = reader.ReadInt32 ();
@@ -113,7 +111,7 @@ public partial class MainWindow : Gtk.Window
 			new_flag [i] = Int32.Parse (pathed_parents [i].Split (System.IO.Path.DirectorySeparatorChar) [1]);
 
 		BinaryWriter writer = new BinaryWriter ((Stream)new FileStream (Config.OutputIsoPath, FileMode.Open));
-		BinaryReader reader = new BinaryReader ((Stream)new FileStream (Config.InputIsoPath, FileMode.Open, FileAccess.Read, FileShare.Read));
+		BinaryReader reader = new BinaryReader (File.OpenRead(Config.InputIsoPath));
 
 		writer.BaseStream.Position = Config.OffsetDATA3;
 		reader.BaseStream.Position = Config.OffsetDATA3;

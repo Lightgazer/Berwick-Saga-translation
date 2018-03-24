@@ -14,7 +14,7 @@ public partial class MainWindow : Gtk.Window
 	protected List<string> DumpText (FileInfo file, char[] code_page)
 	{
 		List<string> script = new List<string> ();  
-		BinaryReader reader = new BinaryReader ((Stream)new FileStream (file.FullName, FileMode.Open));
+		BinaryReader reader = new BinaryReader (File.OpenRead(file.FullName));
 		Scene scene = new Scene ();
 		string str = "";
 		string strsq = "";

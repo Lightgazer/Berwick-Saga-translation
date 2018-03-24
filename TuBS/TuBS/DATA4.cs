@@ -11,7 +11,7 @@ static class Data4
 	{
 		offset = new long[3741];
 		size = new int[3741];
-		using (BinaryReader reader = new BinaryReader (new FileStream (Config.InputIsoPath, FileMode.Open, FileAccess.Read, FileShare.Read))) {
+		using (BinaryReader reader = new BinaryReader (File.OpenRead(Config.InputIsoPath))) {
 			for (int i = 0; i < 3741; i++) {
 				reader.BaseStream.Position = 368L + i * 12 + Config.OffsetDATA4;
 				reader.ReadUInt32 ();

@@ -28,7 +28,7 @@ namespace TuBS
 		public static void uncompr(string file)
 		{
 			Console.WriteLine ("File: " + file);
-			BinaryReader reader = new BinaryReader (new FileStream (file, FileMode.Open));
+			BinaryReader reader = new BinaryReader (File.OpenRead(file));
 			int size = reader.ReadInt32 ();
 			reader.ReadInt32 ();
 			buffer = new byte[reader.BaseStream.Length - 8];
