@@ -46,6 +46,11 @@ static class Config
 
 	static Config ()
 	{
+		Refresh ();
+	}
+
+	public static void Refresh ()
+	{
 		string[] config_file = File.ReadAllLines ("config.txt");
 		foreach (string line in config_file) {
 			string[] conf = Regex.Replace (line, "#.*?\r", string.Empty).Split (new char[] {'='}, 2);

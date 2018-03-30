@@ -3,13 +3,13 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
+      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="1432" column="1" />
       <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="1433" column="1" />
-      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="1434" column="1" />
-      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="655" column="1" />
-      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="679" column="1" />
+      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="654" column="1" />
+      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="678" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="TuBS/DATA4.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TuBS/MainWindow.cs">
     <Files>
       <File FileName="TuBS/MainWindow.cs" Line="1" Column="1" />
       <File FileName="TuBS/EmptyClass.cs" Line="1" Column="1" />
@@ -20,7 +20,7 @@
       <File FileName="TuBS/Comp.cs" Line="1" Column="1" />
       <File FileName="TuBS/DatScript.cs" Line="1" Column="1" />
       <File FileName="TuBS/Program.cs" Line="1" Column="1" />
-      <File FileName="TuBS/DATA4.cs" Line="5" Column="13" />
+      <File FileName="TuBS/DATA4.cs" Line="1" Column="1" />
       <File FileName="TuBS/Config.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>

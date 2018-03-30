@@ -14,13 +14,24 @@ public partial class MainWindow : Gtk.Window
 	public MainWindow () : base (Gtk.WindowType.Toplevel)
 	{
 		Build ();
+		TuBSInit ();
+	}
+
+	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
+	{
+		Application.Quit ();
+		a.RetVal = true;
+	}
+
+	protected void TuBSInit () 
+	{
 		if (!File.Exists (Config.InputIsoPath))
 			progressbar.Text = "Status: " + Config.InputIsoPath + " not found";
 		if (!File.Exists (Config.SlpsPath))
 			progressbar.Text = "Status: " + Config.SlpsPath + " not found";
 		if (Config.Copy == false)
 			progressbar.Text = "Status: Check config.txt";
-		
+
 		// path separator linux or windows
 		if ('/' != System.IO.Path.DirectorySeparatorChar) {
 			foreach (string file in Directory.EnumerateFiles(Directory.GetCurrentDirectory (), "list*.txt", SearchOption.TopDirectoryOnly)) {
@@ -41,12 +52,6 @@ public partial class MainWindow : Gtk.Window
 
 		foreach (string list in Directory.EnumerateFiles(Directory.GetCurrentDirectory (), "list*.txt", SearchOption.TopDirectoryOnly))
 			ReadImportList (list);
-	}
-
-	protected void OnDeleteEvent (object sender, DeleteEventArgs a)
-	{
-		Application.Quit ();
-		a.RetVal = true;
 	}
 
 	protected void UnpackTARC (string file, string child_dir, string out_dir)
@@ -154,7 +159,8 @@ public partial class MainWindow : Gtk.Window
 			2444, 2445, 2446, 2447, 2449, 2455, 2456, 2457, 2458, 2459, 2460, 2462, 2916, 2919, 2930, 2931, 2932, 2939, 2940, 2962, 3030, 3057, 3058, 3059, //2919 title screen; 2982 eb logo
 			3101, 3107, 3117, 3123, 3124, 3133, 3146, 3165, 3188, 3251, 3258, 3297, 3384, 3386, 3389, 3390, 3391, 3393, 3394, 3396, 3397, 3398, 3400, 3401, 3402,
 			3404, 3405, 3407, 3408, 3410, 3411, 3413, 3414, 3416, 3417, 3420, 3422, 3424, 3426, 3428, 3431, 3434, 3435, 3437, 3439, 3442, 3445, 3446, 3449, 3451,
-			3453, 3456, 3458, 3462, 3467, 3469, 3470, 3471, 3475, 3499, 3504, 3525
+			3453, 3456, 3458, 3462, 3467, 3469, 3470, 3471, 3475, 3499, 3504, 3525, 
+			3377, 3378
 		};
 		string parent_dir = "pDATA3" + System.IO.Path.DirectorySeparatorChar;
 		string child_dir = "cDATA3" + System.IO.Path.DirectorySeparatorChar;
@@ -406,6 +412,7 @@ public partial class MainWindow : Gtk.Window
 
 		textview.Buffer.Text = "";
 		progressbar.Text = "Status: SLPS import";
+		Main.IterationDo (false);
 		SlpsImport ();
 		progressbar.Text = "Status: Done";
 		progressbar.Fraction = 1;
@@ -413,14 +420,6 @@ public partial class MainWindow : Gtk.Window
 
 	protected void OnRefreshButtonClicked (object sender, EventArgs e)
 	{
-		string pathdat4 = "DATA4.DAT";
-		string pathdat3 = "DATA3.DAT";
-		if (!File.Exists (pathdat4))
-			progressbar.Text = "Status: " + pathdat4 + " not found";
-		else if (!File.Exists (pathdat3))
-			progressbar.Text = "Status: " + pathdat3 + " not found";
-		else
-			progressbar.Text = "Status: Ready";
 		import_list.Clear ();
 		lastgen_list.Clear ();
 		grandchild_list.Clear ();
@@ -428,8 +427,9 @@ public partial class MainWindow : Gtk.Window
 		parent_list.Clear ();
 		script_list.Clear ();
 		ttx_list.Clear ();
-		tb_list.Clear (); 
-		foreach (string list in Directory.EnumerateFiles(Directory.GetCurrentDirectory (), "list*.txt", SearchOption.TopDirectoryOnly))
-			ReadImportList (list);
+		tb_list.Clear ();
+		Config.Refresh ();
+		Data4.Refresh ();
+		TuBSInit ();
 	}
 }

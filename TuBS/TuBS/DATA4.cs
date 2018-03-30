@@ -33,6 +33,18 @@ static class Data4
 			writer.Flush ();
 		}
 	}
+
+	public static void Refresh ()
+	{
+		using (BinaryReader reader = new BinaryReader (File.OpenRead(Config.InputIsoPath))) {
+			for (int i = 0; i < 3741; i++) {
+				reader.BaseStream.Position = 368L + i * 12 + Config.OffsetDATA4;
+				reader.ReadUInt32 ();
+				offset [i] = (long)(reader.ReadInt32 () * 2048);
+				size [i] = reader.ReadInt32 ();
+			}
+		}
+	}
 }
 
 
