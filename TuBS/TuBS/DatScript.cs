@@ -206,18 +206,7 @@ namespace TuBS
 	class Field
 	{
 		int type;
-		public string Type {
-			get {
-				if (type == 6)
-					return "Pot";
-				if (type == 474)
-					return "Mail";
-				if (type == 977)
-					return "Text";
-				return "Unknown " + type;
-			}
-		}
-		public byte[] data;
+		byte[] data;
 		bool dry = false;
 		public bool IsDry {
 			get {

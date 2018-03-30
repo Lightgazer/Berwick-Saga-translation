@@ -4,7 +4,7 @@ using System.IO;
 
 static class Data4
 {
-	public static long[] offset;
+	public static long[] offset ;
 	public static int[] size;
 
 	static Data4 ()
