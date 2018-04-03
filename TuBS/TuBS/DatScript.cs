@@ -228,6 +228,7 @@ namespace TuBS
 			BinaryReader reader = new BinaryReader (new MemoryStream (data));
 			type = reader.ReadInt32 ();
 			if (type == 6) { //Complex
+				dry = true;
 				int first_size = reader.ReadInt32 ();
 				int second_size = reader.ReadInt32 ();
 				int last_size = reader.ReadInt32 ();
@@ -236,6 +237,8 @@ namespace TuBS
 					int size = reader.ReadInt32 ();
 					first_size -= size;
 					flds.Add(new Field (reader.ReadBytes (size - 4)));
+					if (flds.Last ().dry == false)
+						dry = false;
 				}
 				flask1 = flds.ToArray ();
 
@@ -244,6 +247,8 @@ namespace TuBS
 					int size = reader.ReadInt32 ();
 					second_size -= size;
 					flds.Add(new Field (reader.ReadBytes (size - 4)));
+					if (flds.Last ().dry == false)
+						dry = false;
 				}
 				flask2 = flds.ToArray ();
 
@@ -252,6 +257,8 @@ namespace TuBS
 					int size = reader.ReadInt32 ();
 					last_size -= size;
 					flds.Add(new Field (reader.ReadBytes (size - 4)));
+					if (flds.Last ().dry == false)
+						dry = false;
 				}
 				flask3 = flds.ToArray ();
 
