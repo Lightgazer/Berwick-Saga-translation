@@ -21,6 +21,26 @@ namespace TuBS
 					ret [i++] = 0x60;
 					continue;
 				}
+				if (strch == '&') {
+					ret [i++] = 0x81;
+					ret [i++] = 0x95;
+					continue;
+				}
+				if (strch == '%') {
+					ret [i++] = 0x81;
+					ret [i++] = 0x93;
+					continue;
+				}
+				if (strch == '+') {
+					ret [i++] = 0x81;
+					ret [i++] = 0x7B;
+					continue;
+				}
+				if (strch == '×') {
+					ret [i++] = 0x81;
+					ret [i++] = 0x7E;
+					continue;
+				}
 				byte j = 0;
 				foreach (char codech in upper_case) {
 					if (strch == codech) {
@@ -67,6 +87,7 @@ namespace TuBS
 
 		static public void Import (string input_file, string original)
 		{
+			Console.WriteLine (input_file);
 			string tmp = "temp4";
 			string[] input = File.ReadAllLines (input_file);
 			if (!input [0].StartsWith ("[Field=")) {
@@ -301,6 +322,11 @@ namespace TuBS
 			return ret;
 		}
 
+		string RemoveFirst (string str, string replace)
+		{
+			return str.Substring (replace.Length);
+		}
+
 		public void SetText (string str)
 		{
 			if (type == 977 | type == 494)
@@ -308,11 +334,11 @@ namespace TuBS
 			else if (type == 6) {
 				int buble = int.Parse(str.Split (new string[] { "[Fl1:", "[Fl2:", "[Fl3:", "]" }, StringSplitOptions.RemoveEmptyEntries) [0]);
 				if(str.StartsWith("[Fl1:"))
-					flask1[buble].SetText(str.Replace ("[Fl1:" + buble + "]", ""));
+					flask1[buble].SetText(RemoveFirst (str, "[Fl1:" + buble + "]"));
 				else if (str.StartsWith("[Fl2:"))
-					flask2[buble].SetText(str.Replace ("[Fl2:" + buble + "]", ""));
+					flask2[buble].SetText(RemoveFirst (str, "[Fl2:" + buble + "]"));
 				else if (str.StartsWith("[Fl3:"))
-					flask3[buble].SetText(str.Replace ("[Fl3:" + buble + "]", ""));
+					flask3[buble].SetText(RemoveFirst (str, "[Fl3:" + buble + "]"));
 			}
 		}
 
