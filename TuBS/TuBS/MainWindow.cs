@@ -52,6 +52,8 @@ public partial class MainWindow : Gtk.Window
 
 		foreach (string list in Directory.EnumerateFiles(Directory.GetCurrentDirectory (), "list*.txt", SearchOption.TopDirectoryOnly))
 			ReadImportList (list);
+		
+		label1.Text = " Input Iso: " + Config.InputIsoPath + "\n Output Iso: " + Config.OutputIsoPath;
 	}
 
 	protected void UnpackTARC (string file, string child_dir, string out_dir)

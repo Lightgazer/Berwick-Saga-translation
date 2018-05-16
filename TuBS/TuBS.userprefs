@@ -3,34 +3,26 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="1431" column="1" />
-      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="1432" column="1" />
-      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="653" column="1" />
-      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="677" column="1" />
+      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="1433" column="1" />
+      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="1434" column="1" />
+      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="655" column="1" />
+      <Breakpoint file="/home/lightgazer/etc/bs/mono/TuBS/TuBS/MainWindow.cs" line="679" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workbench ActiveDocument="TuBS/DatScript.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="TuBS/MainWindow.cs">
     <Files>
-      <File FileName="TuBS/MainWindow.cs" Line="392" Column="15" />
+      <File FileName="TuBS/MainWindow.cs" Line="56" Column="30" />
       <File FileName="TuBS/EmptyClass.cs" Line="1" Column="1" />
       <File FileName="TuBS/CodePage.cs" Line="1" Column="1" />
       <File FileName="TuBS/ImportScript.cs" Line="1" Column="1" />
       <File FileName="TuBS/ExportScript.cs" Line="1" Column="1" />
       <File FileName="TuBS/ImageConv.cs" Line="1" Column="1" />
       <File FileName="TuBS/Comp.cs" Line="1" Column="1" />
-      <File FileName="TuBS/DatScript.cs" Line="30" Column="23" />
+      <File FileName="TuBS/DatScript.cs" Line="1" Column="1" />
       <File FileName="TuBS/DATA4.cs" Line="1" Column="1" />
       <File FileName="TuBS/Config.cs" Line="1" Column="1" />
-      <File FileName="TuBS/Program.cs" Line="12" Column="3" />
+      <File FileName="TuBS/Program.cs" Line="1" Column="1" />
     </Files>
-    <Pads>
-      <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State>
-          <Value>strch</Value>
-          <Value>str</Value>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.TuBS PreferredExecutionTarget="MonoDevelop.Default" />
 </Properties>

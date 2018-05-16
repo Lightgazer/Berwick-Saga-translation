@@ -20,6 +20,8 @@ public partial class MainWindow
 	private global::Gtk.ScrolledWindow GtkScrolledWindow;
 	
 	private global::Gtk.TextView textview;
+	
+	private global::Gtk.Label label1;
 
 	protected virtual void Build ()
 	{
@@ -100,12 +102,22 @@ public partial class MainWindow
 		this.vbox1.Add (this.GtkScrolledWindow);
 		global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.GtkScrolledWindow]));
 		w8.Position = 2;
+		// Container child vbox1.Gtk.Box+BoxChild
+		this.label1 = new global::Gtk.Label ();
+		this.label1.Name = "label1";
+		this.label1.Xalign = 0F;
+		this.label1.LabelProp = global::Mono.Unix.Catalog.GetString ("label1");
+		this.vbox1.Add (this.label1);
+		global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox1 [this.label1]));
+		w9.Position = 3;
+		w9.Expand = false;
+		w9.Fill = false;
 		this.Add (this.vbox1);
 		if ((this.Child != null)) {
 			this.Child.ShowAll ();
 		}
 		this.DefaultWidth = 547;
-		this.DefaultHeight = 232;
+		this.DefaultHeight = 282;
 		this.Show ();
 		this.DeleteEvent += new global::Gtk.DeleteEventHandler (this.OnDeleteEvent);
 		this.unpack_button.Clicked += new global::System.EventHandler (this.OnUnpackButtonClicked);
