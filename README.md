@@ -9,7 +9,6 @@ Windows:
 Install MSBuild Tools 2013, 2015(both) and gtk#.  
 Use Xamarin Studio or Visual Studio to compile.  
 
-
-  
-  
-Contact me via twitter https://twitter.com/Lightgazer or Telegram @Lightgazer
+# Contact   
+Twitter: https://twitter.com/Lightgazer  
+Telegram: https://t.me/Lightgazer
