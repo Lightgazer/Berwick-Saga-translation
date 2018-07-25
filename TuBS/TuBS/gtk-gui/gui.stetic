@@ -9,7 +9,7 @@
   </import>
   <widget class="Gtk.Window" id="MainWindow" design-size="547 282">
     <property name="MemberName" />
-    <property name="Title">リース、ウォードの死亡</property>
+    <property name="Title">300</property>
     <property name="WindowPosition">CenterOnParent</property>
     <signal name="DeleteEvent" handler="OnDeleteEvent" />
     <child>

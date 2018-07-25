@@ -8,6 +8,7 @@ namespace TuBS
 	{
 		const int palette_size = 512;
 		ushort[] paletteBGR = new ushort[palette_size / 2];
+		byte alpha_shade = 0xE8;
 
 		public PaletteBGR (string file)
 		{
@@ -39,7 +40,7 @@ namespace TuBS
 			if (a == 0x8000)
 				a = 0xFF;
 			else
-				a = 0xE8;
+				a = alpha_shade;
 
 			return Color.FromArgb (a, r, g, b);
 		}
@@ -48,9 +49,9 @@ namespace TuBS
 		{
 			byte index = 0;
 			int maxdev = 1024;
-			if (color.A < 0xFA)
+			if (color.A < alpha_shade)
 				for (int i = 0; i < palette_size / 2; i++)
-					if (BGRToColor (paletteBGR [i]).A == 0xE8)
+					if (BGRToColor (paletteBGR [i]).A == alpha_shade)
 						return (byte)i;
 			for (int i = 0; i < palette_size / 2; i++) {
 				Color palette = BGRToColor (paletteBGR [i]);
@@ -75,6 +76,7 @@ namespace TuBS
 	{
 		const int palette_size = 512;
 		ushort[] paletteBGR = new ushort[palette_size / 2];
+		byte alpha_shade = 0xE8;
 
 		public PaletteBGRS (string file)
 		{
@@ -105,7 +107,7 @@ namespace TuBS
 			if (a == 0x8000)
 				a = 0xFF;
 			else
-				a = 0xE8;
+				a = alpha_shade;
 
 			return Color.FromArgb (a, r, g, b);
 		}
@@ -114,9 +116,9 @@ namespace TuBS
 		{
 			byte index = 0;
 			int maxdev = 1024;
-			if (color.A < 0xFA)
+			if (color.A < alpha_shade)
 				for (int i = 0; i < palette_size / 2; i++)
-					if (BGRToColor (paletteBGR [i]).A == 0xE8)
+					if (BGRToColor (paletteBGR [i]).A == alpha_shade)
 						return (byte)i;
 			for (int i = 0; i < palette_size / 2; i++) {
 				Color palette = BGRToColor (paletteBGR [i]);
